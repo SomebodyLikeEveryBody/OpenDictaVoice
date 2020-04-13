@@ -29,3 +29,11 @@ Run the shell command:
 ```bash
 python ./main.py
 ```
+
+It will automatically start to record.
+
+When you are finished, press CTRL + C.
+
+It will print the result on screen.
+
+Very shortly, it will be pasted in the clipboard or implement more usefull features.
