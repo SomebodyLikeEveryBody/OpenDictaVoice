@@ -1,6 +1,7 @@
 import speech_recognition
 import os
 import opendictavoice_modules.recorder
+import opendictavoice_modules.GUI
 
 def recognize_wav(wavpath):
     try:
@@ -38,6 +39,7 @@ def record_N_save(p_filename):
     recorder.start_record_N_save('file.wav')
 
 def main():
+    gui = opendictavoice_modules.GUI.builded_GUI()
     #record_N_save('file.wav')
     #recognized_text = recognize_wav('./file.wav')
     #print("Google thinks you said:\n\n" + recognized_text + "\n\n")
