@@ -3,6 +3,8 @@ import os
 import opendictavoice_modules.recorder
 import opendictavoice_modules.GUI
 
+WAV_FILENAME = './recorded.wav'
+
 def recognize_wav(wavpath):
     try:
         # Recognize audio
@@ -34,13 +36,17 @@ def format_recognized_text(p_str):
 
     return ret_str
 
-def record_N_save(p_filename):
-    recorder = opendictavoice_modules.recorder.Recorder()
-    recorder.start_record_N_save('file.wav')
+def record_N_save():
+    recorder.start_record_N_save(WAV_FILENAME)
 
 def main():
+    recorder = opendictavoice_modules.recorder.Recorder()
+
+    #Probably need to pass recorder.start_record_N_save() and recorder.stop_record() pointers to GUI constructor to bind it directely
     gui = opendictavoice_modules.GUI.builded_GUI()
-    #record_N_save('file.wav')
+
+    gui.rec_button.bind("<Button-1>", lambda: print('record'))
+    gui.stop_button.bind("<Button-1>", lambda: print('stop'))
     #recognized_text = recognize_wav('./file.wav')
     #print("Google thinks you said:\n\n" + recognized_text + "\n\n")
     #os.remove('./file.wav')
