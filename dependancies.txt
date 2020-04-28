@@ -1,0 +1,6 @@
+- sudo apt-get install portaudio 
+  or
+  brew install portaudio 
+
+- pip install pyaudio
+

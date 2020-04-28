@@ -1,7 +1,8 @@
 import speech_recognition
 import os
+import opendictavoice_modules.recorder
 
-def recognize(wavpath):
+def recognize_wav(wavpath):
     try:
         # Recognize audio
         recognizer = speech_recognition.Recognizer()
@@ -32,8 +33,16 @@ def format_recognized_text(p_str):
 
     return ret_str
 
+def record_N_save(p_filename):
+    recorder = opendictavoice_modules.recorder.Recorder()
+    recorder.start_record_N_save('file.wav')
+
+def main():
+    #record_N_save('file.wav')
+    #recognized_text = recognize_wav('./file.wav')
+    #print("Google thinks you said:\n\n" + recognized_text + "\n\n")
+    #os.remove('./file.wav')
+
+
 if __name__ == "__main__":
-    os.system('arecord -r 44100 file.wav')
-    recognized_text = recognize('./file.wav')
-    print("Google thinks you said:\n\n" + recognized_text + "\n\n")     
-    os.remove('./file.wav')
+    main()
