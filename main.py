@@ -26,27 +26,24 @@ def recognize_wav(wavpath):
         return ""
 
 def format_recognized_text(p_str):
-#   With Google STT engine:
-#   "à la ligne" --> \n
-#   "virgule" --> ,
-
     ret_str = p_str
-#    ret_str = ret_str.replace('retour à la ligne', '\n')
-#    ret_str = ret_str.replace('virgule', ',')
+#   ret_str = ret_str.replace('retour à la ligne', '\n')
+#   ret_str = ret_str.replace('virgule', ',')
 
     return ret_str
 
-def record_N_save():
-    recorder.start_record_N_save(WAV_FILENAME)
+def test_record():
+    print('record')
+
+def test_stop_record():
+    print('stop record')
 
 def main():
     recorder = opendictavoice_modules.recorder.Recorder()
-
-    #Probably need to pass recorder.start_record_N_save() and recorder.stop_record() pointers to GUI constructor to bind it directely
     gui = opendictavoice_modules.GUI.builded_GUI()
-
-    gui.rec_button.bind("<Button-1>", lambda: print('record'))
-    gui.stop_button.bind("<Button-1>", lambda: print('stop'))
+    gui.rec_button.bind("<Button-1>", lambda event : [gui.switch_buttons(event), recorder.start_record_N_save(WAV_FILENAME)])
+    gui.stop_button.bind("<Button-1>", lambda event : [gui.switch_buttons(event), recorder.stop_record()])
+    gui.launch()
     #recognized_text = recognize_wav('./file.wav')
     #print("Google thinks you said:\n\n" + recognized_text + "\n\n")
     #os.remove('./file.wav')

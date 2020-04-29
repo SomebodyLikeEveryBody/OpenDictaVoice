@@ -10,7 +10,6 @@ class builded_GUI:
         self.stop_button = self.set_stop_button()
 
         self.rec_button.pack()
-        self.window.mainloop()
 
     def set_window(self):
         ret_window = tkinter.Tk()
@@ -22,14 +21,14 @@ class builded_GUI:
     def set_rec_button(self):
         ret_button = tkinter.Button(self.window, text="Record")
         ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
-        ret_button.bind('<Button-1>', self.switch_buttons)
+#        ret_button.bind('<Button-1>', self.switch_buttons)
 
         return ret_button
 
     def set_stop_button(self):
         ret_button = tkinter.Button(self.window, text="Stop")
         ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
-        ret_button.bind('<Button-1>', self.switch_buttons)
+#        ret_button.bind('<Button-1>', self.switch_buttons)
 
         return ret_button
 
@@ -38,3 +37,6 @@ class builded_GUI:
         l.remove(event.widget)
         event.widget.pack_forget()
         l[0].pack()
+
+    def launch(self):
+        self.window.mainloop()
