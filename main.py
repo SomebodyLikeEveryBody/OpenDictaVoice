@@ -2,6 +2,7 @@ import speech_recognition
 import os
 import opendictavoice_modules.recorder
 import opendictavoice_modules.GUI
+import threading
 
 WAV_FILENAME = './recorded.wav'
 
@@ -33,15 +34,23 @@ def format_recognized_text(p_str):
     return ret_str
 
 def test_record():
-    print('record')
+    print('recording')
 
 def test_stop_record():
-    print('stop record')
+    print('stopped recording')
+
+def ouaich(p_recorder):
+    x = threading.Thread(target=p_recorder.start_record_N_save, args=(WAV_FILENAME,))
+    x.start()
 
 def main():
     recorder = opendictavoice_modules.recorder.Recorder()
     gui = opendictavoice_modules.GUI.builded_GUI()
-    gui.rec_button.bind("<Button-1>", lambda event : [gui.switch_buttons(event), recorder.start_record_N_save(WAV_FILENAME)])
+#    gui.rec_button.bind("<Button-1>", lambda event : [gui.switch_buttons(event), recorder.start_record_N_save(WAV_FILENAME)])
+    x = threading.Thread(target=(lambda x: [recorder.start_record_N_save(x)]), args=(WAV_FILENAME,))
+    gui.rec_button.bind("<Button-1>", lambda event : [gui.switch_buttons(event), ouaich(recorder)])
+
+
     gui.stop_button.bind("<Button-1>", lambda event : [gui.switch_buttons(event), recorder.stop_record()])
     gui.launch()
     #recognized_text = recognize_wav('./file.wav')
