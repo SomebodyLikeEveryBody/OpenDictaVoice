@@ -7,7 +7,6 @@ CHANNELS = 2
 RATE = 44100
 CHUNK = 1024
 RECORD_SECONDS = 2
-WAVE_OUTPUT_FILENAME = "file.wav"
  
 class Recorder:
     def __init__(self):
@@ -43,15 +42,12 @@ class Recorder:
 
         print("finished recording")
 
-
-
-
         # stop Recording
         stream.stop_stream()
         stream.close()
         self.pyaudio_obj.terminate()
  
-        waveFile = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
+        waveFile = wave.open(p_filename, 'wb')
         waveFile.setnchannels(CHANNELS)
         waveFile.setsampwidth(self.pyaudio_obj.get_sample_size(FORMAT))
         waveFile.setframerate(RATE)
@@ -60,4 +56,3 @@ class Recorder:
 
     def stop_record(self):
         self.keep_record = False
-        print("WE STOP")
