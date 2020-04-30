@@ -10,13 +10,13 @@ RECORD_SECONDS = 2
  
 class Recorder:
     def __init__(self):
-        self.pyaudio_obj = pyaudio.PyAudio()
+#        self.pyaudio_obj = pyaudio.PyAudio()
         self.keep_record = False
         self.audio_frames = []
         self.stream = None
  
     def start_record(self):
-        # start Recording
+        self.pyaudio_obj = pyaudio.PyAudio()
         self.audio_frames = []
         self.stream = self.pyaudio_obj.open(format=FORMAT, channels=CHANNELS,
                     rate=RATE, input=True,
@@ -24,7 +24,6 @@ class Recorder:
 
         self.keep_record = True
         data = None
-
         while self.keep_record == True:
             data = self.stream.read(CHUNK)
             self.audio_frames.append(data)
@@ -33,7 +32,7 @@ class Recorder:
         self.stream.stop_stream()
         self.stream.close()
         self.stream = None
-#        self.pyaudio_obj.terminate()
+        self.pyaudio_obj.terminate()
 
     def stop_record_N_save(self, p_filename):
         self.keep_record = False

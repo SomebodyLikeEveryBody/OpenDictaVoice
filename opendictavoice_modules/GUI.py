@@ -15,8 +15,14 @@ class builded_GUI:
         ret_window = tkinter.Tk()
         ret_window.title("[ODV]")
         ret_window.geometry(str(WINDOW_WIDTH) + "x" + str(WINDOW_HEIGHT))
+        ret_window.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         return ret_window
+
+    def on_closing(self):
+        print("AU REVOIR")
+        self.window.destroy()
+
 
     def set_rec_button(self):
         ret_button = tkinter.Button(self.window, text="Record")
