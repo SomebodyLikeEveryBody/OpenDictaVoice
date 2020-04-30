@@ -1,4 +1,5 @@
 import tkinter
+import os
 
 WINDOW_WIDTH = 150
 WINDOW_HEIGHT = 150
@@ -25,14 +26,16 @@ class builded_GUI:
 
 
     def set_rec_button(self):
-        ret_button = tkinter.Button(self.window, text="Record")
+        img = tkinter.PhotoImage(file=r'./record.png')
+        ret_button = tkinter.Button(self.window, image=img)
         ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
 #        ret_button.bind('<Button-1>', self.switch_buttons)
 
         return ret_button
 
     def set_stop_button(self):
-        ret_button = tkinter.Button(self.window, text="Stop")
+        img = tkinter.PhotoImage(file=r'./stop.png')
+        ret_button = tkinter.Button(self.window, image=img)
         ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
 #        ret_button.bind('<Button-1>', self.switch_buttons)
 
