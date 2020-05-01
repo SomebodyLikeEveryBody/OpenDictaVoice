@@ -4,6 +4,7 @@ import opendictavoice_modules.recorder
 import opendictavoice_modules.GUI
 import threading
 import pyperclip
+import pyautogui
 
 WAV_FILENAME = './recorded.wav'
 
@@ -50,6 +51,10 @@ def analyse_wav_to_get_text(p_filename):
     recognized_text = recognize_wav(p_filename)
     print(recognized_text)
     pyperclip.copy(recognized_text)
+    pyautogui.PAUSE = 0.2
+    pyautogui.hotkey('alt', 'tab')   
+    pyautogui.write(recognized_text)
+    #pyautogui.hotkey('ctrl', 'v')   
     os.remove(p_filename)
 
 def stop_record_then_analyse(p_recorder, p_filename):
