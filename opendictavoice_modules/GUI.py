@@ -44,9 +44,9 @@ class builded_GUI:
         return ret_button
 
     def switch_buttons(self, event):
+        event.widget.pack_forget()
         l = [self.rec_button, self.stop_button]
         l.remove(event.widget)
-        event.widget.pack_forget()
         l[0].pack()
 
     def launch(self):
