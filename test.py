@@ -1,22 +1,20 @@
-import threading
+import tkinter
 
-def f():
-    ret = 0
-    for i in range(0, 15000000):
-        ret += 1
-    print(ret)
+def set_button(p_root):
+    img = tkinter.PhotoImage(file=r'./stop.png')
+    ret_button = tkinter.Button(p_root, text='pouet')
+    ret_button.configure(image=img)
+    
 
-def test():
-    x = threading.Thread(target=f)
-    print('prets ?')
-    print('go !')
-    x.start()
-    print('ca tourne')
-    print('ca tourne toujours')
-    print('ca tourne encore')
-    print('toussa toussa')
-    x.join()
-    print('etc etc')
-    print('et tralali et tralala')
+    return ret_button
 
-test()
+def main():
+    t = tkinter.Tk()
+    button = set_button(t)
+    button.pack()
+
+    t.mainloop()
+
+if __name__ == "__main__":
+    main()
+
