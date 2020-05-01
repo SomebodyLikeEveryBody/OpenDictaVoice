@@ -31,7 +31,7 @@ class builded_GUI:
         img = tkinter.PhotoImage(file=self.resources_path + 'imgs/record.png')
         ret_button = tkinter.Button(self.window, image=img)
         ret_button.image = img
-        ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
+        ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT) 
 
         return ret_button
 
