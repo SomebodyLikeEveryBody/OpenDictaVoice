@@ -9,7 +9,7 @@ class Builded_GUI:
         self.window = self.build_window()
         self.rec_button = self.build_rec_button()
         self.stop_button = self.build_stop_button()
-
+        self.build_language_chooser()
         self.rec_button.pack()
 
     def build_window(self):
@@ -43,6 +43,14 @@ class Builded_GUI:
 
         return ret_button
 
+    def build_language_chooser(self):
+        choices = { 'fr','en'}
+        self.languageStringVar = tkinter.StringVar(self.window)
+        self.languageStringVar.set('fr') 
+        ret_menu = tkinter.OptionMenu(self.window, self.languageStringVar, *choices)
+        ret_menu.pack()
+        return ret_menu
+
     def switch_buttons(self, event):
         l = [self.rec_button, self.stop_button]
         l.remove(event.widget)
@@ -51,3 +59,7 @@ class Builded_GUI:
 
     def launch(self):
         self.window.mainloop()
+
+    #returns the string that represents the current language, e.g. "fr" or "en"
+    def getLanguage(self):
+        return self.languageStringVar.get()
