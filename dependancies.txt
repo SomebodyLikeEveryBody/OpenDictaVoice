@@ -6,3 +6,4 @@
 
 - sudo apt-get install xclip
 
+- pyautogui module
