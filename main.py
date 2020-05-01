@@ -1,5 +1,5 @@
 import opendictavoice_modules.recorder
-import opendictavoice_modules.GUI
+import opendictavoice_modules.builded_GUI
 import opendictavoice_modules.voice_recognizer
 import threading
 import pyperclip
@@ -19,12 +19,12 @@ def stop_record_then_analyse(p_recorder, p_voice_recognizer, p_filename):
     print("(I put it in your editor)")
     pyautogui.PAUSE = 0.4
     pyautogui.hotkey('alt', 'tab')   
-    pyautogui.hotkey('ctrl', 'v')   
+    pyautogui.hotkey('ctrl', 'v')
 
 def main():
     recorder = opendictavoice_modules.recorder.Recorder()
     voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer()
-    gui = opendictavoice_modules.GUI.builded_GUI(RESOURCES_PATH)
+    gui = opendictavoice_modules.builded_GUI.Builded_GUI(RESOURCES_PATH)
 
     gui.rec_button.bind("<Button-1>", lambda event : [gui.switch_buttons(event), launch_record_in_thread(recorder)])
     gui.stop_button.bind("<Button-1>", lambda event : [gui.switch_buttons(event), stop_record_then_analyse(recorder, voice_recognizer, WAV_FILENAME)])
