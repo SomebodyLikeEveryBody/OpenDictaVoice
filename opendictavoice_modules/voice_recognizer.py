@@ -3,10 +3,15 @@ import pyperclip
 import os
 
 class Voice_Recognizer:
-    def __init__(self):
-        self.pouet = 'prout'
 
-    def wav_to_text(self, p_wavpath):
+    #by default the language is french
+    def __init__(self):
+        self.language = 'fr-FR'
+
+    #input: p_wavpath is the path to a .wav file
+    #output: the recognized text
+    #this function is private and does not delete the wav file
+    def _wav_to_text(self, p_wavpath):
         ret_str = ""
 
         try:
@@ -16,7 +21,7 @@ class Voice_Recognizer:
 
             # recognize speech using Google_STT --> We'll see if we continue with another STT engine
             try:
-                ret_str = self.format_recognized_text(recognizer.recognize_google(audio, language='fr-FR'))
+                ret_str = recognizer.recognize_google(audio, language=self.language)
             except speech_recognition.UnknownValueError:
                 print("Google could not understand audio")
             except speech_recognition.RequestError as e:
@@ -28,15 +33,11 @@ class Voice_Recognizer:
         return ret_str
 
 
-    def format_recognized_text(self, p_str):
-        ret_str = p_str
-    #   ret_str = ret_str.replace('retour à la ligne', '\n')
-    #   ret_str = ret_str.replace('virgule', ',')
-
-        return ret_str
-
-    def wav_to_formated_text(self, p_filename):
-        recognized_text = self.wav_to_text(p_filename)
-        pyperclip.copy(recognized_text)
+    def wav_to_text(self, p_filename):
+        recognized_text = self._wav_to_text(p_filename)
         os.remove(p_filename)
         return recognized_text
+
+
+    def setLanguage(self, language):
+        self.language = language
