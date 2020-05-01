@@ -3,13 +3,13 @@ import tkinter
 WINDOW_WIDTH = 150
 WINDOW_HEIGHT = 150
 
-class builded_GUI:
+class Builded_GUI:
     def __init__(self, p_resources_path):
         self.resources_path = p_resources_path
         self.window = self.build_window()
         self.rec_button = self.build_rec_button()
         self.stop_button = self.build_stop_button()
-
+        self.build_language_chooser()
         self.rec_button.pack()
 
     def build_window(self):
@@ -43,6 +43,14 @@ class builded_GUI:
 
         return ret_button
 
+    def build_language_chooser(self):
+        choices = { 'fr','en'}
+        self.languageStringVar = tkinter.StringVar(self.window)
+        self.languageStringVar.set('fr') 
+        ret_menu = tkinter.OptionMenu(self.window, self.languageStringVar, *choices)
+        ret_menu.pack()
+        return ret_menu
+
     def switch_buttons(self, event):
         event.widget.pack_forget()
         l = [self.rec_button, self.stop_button]
@@ -51,3 +59,7 @@ class builded_GUI:
 
     def launch(self):
         self.window.mainloop()
+
+    #returns the string that represents the current language, e.g. "fr" or "en"
+    def get_language(self):
+        return self.languageStringVar.get()
