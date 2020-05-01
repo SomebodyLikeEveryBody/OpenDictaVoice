@@ -33,7 +33,7 @@ def main():
     formatter = opendictavoice_modules.formatter.Formatter()
 
     gui.rec_button.bind("<Button-1>", lambda event: [gui.switch_buttons(
-        event), voice_recognizer.setLanguage(gui.getLanguage()), launch_record_in_thread(recorder)])
+        event), voice_recognizer.set_language(gui.get_language()), launch_record_in_thread(recorder)])
     gui.stop_button.bind("<Button-1>", lambda event: [gui.switch_buttons(
         event), stop_record_then_analyse(recorder, voice_recognizer, formatter, WAV_FILENAME)])
     gui.launch()

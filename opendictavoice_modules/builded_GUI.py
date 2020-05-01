@@ -61,5 +61,5 @@ class Builded_GUI:
         self.window.mainloop()
 
     #returns the string that represents the current language, e.g. "fr" or "en"
-    def getLanguage(self):
+    def get_language(self):
         return self.languageStringVar.get()
