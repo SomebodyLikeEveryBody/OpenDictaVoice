@@ -12,4 +12,4 @@ pas mal, les prochains objectifs sont:
 
 - pouvoir configurer le binding facilement depuis l'interface graphique
 
-
+- faire jouer un son quand google ne reconnait pas le texte parlé, plutot que d'avoir un print dans la console

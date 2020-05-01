@@ -1,11 +1,11 @@
 import tkinter
-import os
 
 WINDOW_WIDTH = 150
 WINDOW_HEIGHT = 150
 
 class builded_GUI:
-    def __init__(self):
+    def __init__(self, p_resources_path):
+        self.resources_path = p_resources_path
         self.window = self.build_window()
         self.rec_button = self.build_rec_button()
         self.stop_button = self.build_stop_button()
@@ -28,7 +28,7 @@ class builded_GUI:
         self.window.destroy()
 
     def build_rec_button(self):
-        img = tkinter.PhotoImage(file=r'./record.png')
+        img = tkinter.PhotoImage(file=self.resources_path + 'imgs/record.png')
         ret_button = tkinter.Button(self.window, image=img)
         ret_button.image = img
         ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
@@ -36,7 +36,7 @@ class builded_GUI:
         return ret_button
 
     def build_stop_button(self):
-        img = tkinter.PhotoImage(file=r'./stop.png')
+        img = tkinter.PhotoImage(file=self.resources_path + 'imgs/stop_record.png')
         ret_button = tkinter.Button(self.window, image=img)
         ret_button.image = img
         ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)

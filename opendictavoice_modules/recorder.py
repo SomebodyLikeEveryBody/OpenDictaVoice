@@ -1,6 +1,5 @@
 import pyaudio
 import wave
-import threading
 
 FORMAT = pyaudio.paInt16
 CHANNELS = 2
