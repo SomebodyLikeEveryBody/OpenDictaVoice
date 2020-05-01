@@ -5,6 +5,8 @@ pas mal, les prochains objectifs sont:
 
 - faire en sorte que quand on appuie sur le bouton stop_record,
   montrer une image de moulinage pendant le processing du son pour montrer qu'on ne peut pas recommencer à enregistrer tout de suite
+  ==> pour arriver a faire ca, il faut que la fonction stop_record_N_save soit également lancée dans un Thread, et que ca mettre le
+      bouton de moulinage, puis une fois qu'elle est terminée, enlever le moulinage et remettre le bouton record dans la fenettre
 
 - faire en sorte que ca mette le texte retourné dans le clipboard et que ca fasse un coller, comme ca, ca colle là où il y a le focus 
 
