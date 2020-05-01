@@ -37,6 +37,6 @@ class Voice_Recognizer:
 
     def wav_to_formated_text(self, p_filename):
         recognized_text = self.wav_to_text(p_filename)
-        print(recognized_text)
         pyperclip.copy(recognized_text)
         os.remove(p_filename)
+        return recognized_text

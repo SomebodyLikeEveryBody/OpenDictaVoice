@@ -12,19 +12,14 @@ def launch_record_in_thread(p_recorder):
     thread_record = threading.Thread(target=p_recorder.start_record)
     thread_record.start()
 
-def stop_record_then_analyse(p_recorder, p_voice_recognizer, p_gui, p_filename):
-    recognized_text = recognize_wav(p_filename)
-    print(recognized_text)
-    pyperclip.copy(recognized_text)
-    pyautogui.PAUSE = 0.2
-    pyautogui.hotkey('alt', 'tab')   
-    pyautogui.write(recognized_text)
-    #pyautogui.hotkey('ctrl', 'v')   
-    os.remove(p_filename)
-
 def stop_record_then_analyse(p_recorder, p_voice_recognizer, p_filename):
     p_recorder.stop_record_N_save(p_filename)
-    p_voice_recognizer.wav_to_formated_text(p_filename)
+    text = p_voice_recognizer.wav_to_formated_text(p_filename)
+    print("text that was recognized: " + text)
+    print("(I put it in your editor)")
+    pyautogui.PAUSE = 0.4
+    pyautogui.hotkey('alt', 'tab')   
+    pyautogui.hotkey('ctrl', 'v')   
 
 def main():
     recorder = opendictavoice_modules.recorder.Recorder()
