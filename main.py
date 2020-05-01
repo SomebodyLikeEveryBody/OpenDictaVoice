@@ -3,6 +3,7 @@ import os
 import opendictavoice_modules.recorder
 import opendictavoice_modules.GUI
 import threading
+import pyperclip
 
 WAV_FILENAME = './recorded.wav'
 
@@ -48,7 +49,8 @@ def launch_record_in_thread(p_recorder):
 def analyse_wav_to_get_text(p_filename):
     recognized_text = recognize_wav(p_filename)
     print(recognized_text)
-#    os.remove(p_filename)
+    pyperclip.copy(recognized_text)
+    os.remove(p_filename)
 
 def stop_record_then_analyse(p_recorder, p_filename):
     p_recorder.stop_record_N_save(p_filename)

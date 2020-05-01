@@ -17,6 +17,9 @@ class builded_GUI:
         ret_window.title("[ODV]")
         ret_window.geometry(str(WINDOW_WIDTH) + "x" + str(WINDOW_HEIGHT))
         ret_window.protocol("WM_DELETE_WINDOW", self.on_closing)
+        ret_window.wm_attributes("-topmost", True)
+        ret_window.wait_visibility(ret_window)
+        ret_window.attributes('-alpha', 0.7)
 
         return ret_window
 
