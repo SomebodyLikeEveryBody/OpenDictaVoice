@@ -39,5 +39,5 @@ class Voice_Recognizer:
         return recognized_text
 
 
-    def setLanguage(self, language):
+    def set_language(self, language):
         self.language = language
