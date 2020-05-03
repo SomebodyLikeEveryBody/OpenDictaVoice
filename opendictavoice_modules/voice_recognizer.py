@@ -5,8 +5,9 @@ import os
 class Voice_Recognizer:
 
     #by default the language is french
-    def __init__(self):
+    def __init__(self, p_audio_manager):
         self.language = 'fr-FR'
+        self.audio_manager = p_audio_manager
 
     #input: p_wavpath is the path to a .wav file
     #output: the recognized text
@@ -24,6 +25,7 @@ class Voice_Recognizer:
                 ret_str = recognizer.recognize_google(audio, language=self.language)
             except speech_recognition.UnknownValueError:
                 print("Google could not understand audio")
+                self.audio_manager.play_error_sound()
             except speech_recognition.RequestError as e:
                 print("Google error; {0}".format(e))
 
@@ -35,7 +37,7 @@ class Voice_Recognizer:
 
     def wav_to_text(self, p_filename):
         recognized_text = self._wav_to_text(p_filename)
-        os.remove(p_filename)
+#        os.remove(p_filename)
         return recognized_text
 
 
