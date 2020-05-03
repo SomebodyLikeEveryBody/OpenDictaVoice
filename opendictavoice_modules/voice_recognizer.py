@@ -37,7 +37,7 @@ class Voice_Recognizer:
 
     def wav_to_text(self, p_filename):
         recognized_text = self._wav_to_text(p_filename)
-#        os.remove(p_filename)
+        os.remove(p_filename)
         return recognized_text
 
 
