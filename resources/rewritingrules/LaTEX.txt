@@ -1,0 +1,5 @@
+comma -> ,
+begin takes picture -> \\begin{tikzpicture}
+begin 6 picture -> \\begin{tikzpicture}
+retour à la ligne -> 
+
