@@ -8,10 +8,11 @@ pas mal, les prochains objectifs sont:
   ==> pour arriver a faire ca, il faut que la fonction stop_record_N_save soit également lancée dans un Thread, et que ca mettre le
       bouton de moulinage, puis une fois qu'elle est terminée, enlever le moulinage et remettre le bouton record dans la fenettre
 
-- faire en sorte que ca mette le texte retourné dans le clipboard et que ca fasse un coller, comme ca, ca colle là où il y a le focus 
+- 
 
+- faire en sorte que ca mette le texte retourné dans le clipboard et que ca fasse un coller, comme ca, ca colle là où il y a le focus
+  ==> idealement, ecrire le texte au fur et a mesure
 - pouvoir facilement binder ca avec un peripherique (manette de jeu, n'importe quoi)
-
 - pouvoir configurer le binding facilement depuis l'interface graphique
-
-- faire jouer un son quand google ne reconnait pas le texte parlé, plutot que d'avoir un print dans la console
++ faire jouer un son quand stt le ne reconnait pas le texte parlé, plutot que d'avoir un print dans la console
+- intergration d'une synthese vocale pour diriger le logiciel

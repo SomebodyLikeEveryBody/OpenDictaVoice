@@ -34,7 +34,7 @@ def main():
     audio_manager = opendictavoice_modules.audio_manager.Audio_manager(RESOURCES_PATH)
     voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer(audio_manager)
     gui = opendictavoice_modules.builded_GUI.Builded_GUI(RESOURCES_PATH)
-    formatter = opendictavoice_modules.formatter.Formatter()
+    formatter = opendictavoice_modules.formatter.Formatter([RESOURCES_PATH + 'rewritingrules/LaTEX.txt'])
 
     gui.rec_button.bind("<Button-1>", lambda event: [gui.switch_buttons(
         event), voice_recognizer.set_language(gui.get_language()), launch_record_in_thread(audio_manager)])
