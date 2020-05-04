@@ -41,4 +41,4 @@ def test():
     F = Formatter()
     print(F.format("virgule"))
     
-test()
+#test()
