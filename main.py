@@ -62,7 +62,7 @@ def main():
         stop_record_then_analyse_controlled_buttons_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILENAME)
         
     def stop_controlled_with_keyboard():
-        gui.button_rec_visible()
+        gui.rec_button_visible()
         stop_record_then_analyse_controlled_by_kb_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILENAME)
         
     gui.rec_button.bind("<Button-1>", lambda event: rec_button_click())

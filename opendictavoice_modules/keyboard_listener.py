@@ -35,10 +35,10 @@ class Keyboard_listener:
                 p_when_disactivated()   
                 self.launched = False
                 
-            listener = keyboard.Listener(
-                on_press=do_on_press,
-                on_release=do_on_release)
-            listener.start()
+        listener = keyboard.Listener(
+            on_press=do_on_press,
+            on_release=do_on_release)
+        listener.start()
 
 #        
 #        def on_press(key):
