@@ -16,10 +16,10 @@ def launch_record_in_thread(p_audio_manager):
     thread_record.start()
 
 def stop_record_then_analyse_controlled_buttons_in_thread(p_audio_manager, p_voice_recognizer, p_formatter, p_filename):
-    thread_stop_record = threading.Thread(target=stop_record_then_analyse_controlled_buttons, args=(p_audio_manager, p_voice_recognizer, p_formatter, p_filename))
+    thread_stop_record = threading.Thread(target=stop_record_then_analyse, args=(p_audio_manager, p_voice_recognizer, p_formatter, p_filename))
     thread_stop_record.start()
 
-def stop_record_then_analyse_controlled_buttons(p_audio_manager, p_voice_recognizer, p_formatter, p_filename):
+def stop_record_then_analyse(p_audio_manager, p_voice_recognizer, p_formatter, p_filename):
     p_audio_manager.stop_record_N_save(p_filename)
     text = p_voice_recognizer.wav_to_text(p_filename)
     print('\n\n=========================')
@@ -47,9 +47,9 @@ def stop_record_then_analyse_controlled_by_kb(p_audio_manager, p_voice_recognize
     pyautogui.hotkey('ctrl', 'v')
 
 def main():
+    gui = opendictavoice_modules.builded_GUI.Builded_GUI(RESOURCES_PATH)
     audio_manager = opendictavoice_modules.audio_manager.Audio_manager(RESOURCES_PATH)
     voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer(audio_manager)
-    gui = opendictavoice_modules.builded_GUI.Builded_GUI(RESOURCES_PATH)
     formatter = opendictavoice_modules.formatter.Formatter([RESOURCES_PATH + 'rewritingrules/LaTEX.txt', RESOURCES_PATH + 'rewritingrules/basic.txt'])
 
     def rec_button_click():
