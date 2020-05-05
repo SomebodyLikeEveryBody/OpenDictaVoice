@@ -1,19 +1,23 @@
-- une fenetre avec un bouton qui prend toute la place et quand on clique dessus ca commence a enregistrer
-- quand on clique à nouveau sur le bouton, ca arrete d'enregistrer et ca stocke dans le clipboard le texte qu'on a dit au moment de l'enregistrement
++ une fenetre avec un bouton qui prend toute la place et quand on clique dessus ca commence a enregistrer
++ quand on clique à nouveau sur le bouton, ca arrete d'enregistrer et ca stocke dans le clipboard le texte qu'on a dit au moment de l'enregistrement
 
 pas mal, les prochains objectifs sont:
 
-- faire en sorte que quand on appuie sur le bouton stop_record,
++ faire en sorte que quand on appuie sur le bouton stop_record,
   montrer une image de moulinage pendant le processing du son pour montrer qu'on ne peut pas recommencer à enregistrer tout de suite
   ==> pour arriver a faire ca, il faut que la fonction stop_record_N_save soit également lancée dans un Thread, et que ca mettre le
       bouton de moulinage, puis une fois qu'elle est terminée, enlever le moulinage et remettre le bouton record dans la fenettre
 
 - faire en sorte que pour le formatter, on passe en arg juste un repertoire et ca charge tous les fichiers textes
-- faire en sorte de verifier le format des fichiers de formattage et throw un exception si le format est pas bon 
+- faire en sorte de verifier le format des fichiers de formattage et throw une exception si le format est pas bon 
 
-- faire en sorte que ca mette le texte retourné dans le clipboard et que ca fasse un coller, comme ca, ca colle là où il y a le focus
-  ==> idealement, ecrire le texte au fur et a mesure
++ faire en sorte que ca mette le texte retourné dans le clipboard et que ca fasse un coller, comme ca, ca colle là où il y a le focus
++ faire jouer un son quand stt le ne reconnait pas le texte parlé, plutot que d'avoir un print dans la console
+
+- faire en sorte de pouvoir faire des enregistrements a la chaine, pour cela il faudra regarder s'il existe un fichier ./recorded_i.wav
+  (où i entier naturel, si yen a pas, on considere que le fichier est ./recorded_0.wav, sinon c'est ./recorded_i+1.wav)
+
+- ==> idealement, ecrire le texte au fur et a mesure
 - pouvoir facilement binder ca avec un peripherique (manette de jeu, n'importe quoi)
 - pouvoir configurer le binding facilement depuis l'interface graphique
-+ faire jouer un son quand stt le ne reconnait pas le texte parlé, plutot que d'avoir un print dans la console
 - intergration d'une synthese vocale pour diriger le logiciel
