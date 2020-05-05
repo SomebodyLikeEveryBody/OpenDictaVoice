@@ -65,9 +65,9 @@ def main():
         gui.rec_button_visible()
         stop_record_then_analyse_controlled_by_kb_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILENAME)
         
-    gui.rec_button.bind("<Button-1>", lambda event: rec_button_click())
-    gui.stop_button.bind("<Button-1>", lambda event: stop_button_click())
-    opendictavoice_modules.keyboard_listener.Keyboard_listener(rec_button_click, stop_controlled_with_keyboard)
+    gui.rec_button.bind("<Button-1>", rec_button_click)
+    gui.stop_button.bind("<Button-1>", stop_button_click)
+    opendictavoice_modules.keyboard_listener.Keyboard_listener(rec_button_click, stop_button_click)
     
     #main loop
     gui.launch()
