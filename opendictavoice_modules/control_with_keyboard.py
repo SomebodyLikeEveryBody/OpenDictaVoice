@@ -6,15 +6,10 @@ Created on Tue May  5 12:22:11 2020
 @author: fschwarz
 """
 
-
 from pynput import keyboard
-
-
 
 class Control_With_KeyBoard :
     def __init__(self, whenActivated, whenDisactivated):
-        
-        
         self.ctrl = False
         self.shift = False
         self.launched = False
@@ -45,9 +40,6 @@ class Control_With_KeyBoard :
             on_press=on_press,
             on_release=on_release)
         listener.start()
-
-
-
 
 #        
 #        def on_press(key):

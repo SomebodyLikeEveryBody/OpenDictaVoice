@@ -47,38 +47,32 @@ def stop_record_then_analyse_controlled_by_kb(p_audio_manager, p_voice_recognize
     pyautogui.PAUSE = 0.2
     pyautogui.hotkey('ctrl', 'v')
 
-
-
-
 def main():
     audio_manager = opendictavoice_modules.audio_manager.Audio_manager(RESOURCES_PATH)
     voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer(audio_manager)
     gui = opendictavoice_modules.builded_GUI.Builded_GUI(RESOURCES_PATH)
-    formatter = opendictavoice_modules.formatter.Formatter([RESOURCES_PATH + 'rewritingrules/LaTEX.txt'])
+    formatter = opendictavoice_modules.formatter.Formatter([RESOURCES_PATH + 'rewritingrules/LaTEX.txt', RESOURCES_PATH + 'rewritingrules/basic.txt'])
 
-    def recButtonClick():
-        gui.buttonStopVisible()
+    def rec_button_click():
+        gui.stop_button_visible()
         voice_recognizer.set_language(gui.get_language())   
         launch_record_in_thread(audio_manager)
         
-    def stopButtonClick():
-        gui.buttonRecVisible()
+    def stop_button_click():
+        gui.rec_button_visible()
         stop_record_then_analyse_controlled_buttons_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILENAME)
         
-        
-    def stopControlledWithKeyBoard():
-        gui.buttonRecVisible()
+    def stop_controlled_with_keyboard():
+        gui.button_rec_visible()
         stop_record_then_analyse_controlled_by_kb_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILENAME)
         
-    gui.rec_button.bind("<Button-1>", lambda event: recButtonClick())
-    gui.stop_button.bind("<Button-1>", lambda event: stopButtonClick())
+    gui.rec_button.bind("<Button-1>", lambda event: rec_button_click())
+    gui.stop_button.bind("<Button-1>", lambda event: stop_button_click())
 
-    opendictavoice_modules.control_with_keyboard.Control_With_KeyBoard(recButtonClick, stopControlledWithKeyBoard)
+    opendictavoice_modules.control_with_keyboard.Control_With_KeyBoard(rec_button_click, stop_controlled_with_keyBoard)
     
     #main loop
     gui.launch()
-    
-    
 
     #once main loop broken
     audio_manager.terminate()
