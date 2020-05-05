@@ -50,12 +50,14 @@ class Builded_GUI:
         ret_menu = tkinter.OptionMenu(self.window, self.languageStringVar, *choices)
         ret_menu.pack()
         return ret_menu
-
-    def switch_buttons(self, event):
-        event.widget.pack_forget()
-        l = [self.rec_button, self.stop_button]
-        l.remove(event.widget)
-        l[0].pack()
+        
+    def buttonRecVisible(self):
+        self.stop_button.pack_forget()
+        self.rec_button.pack()
+        
+    def buttonStopVisible(self):
+        self.rec_button.pack_forget()
+        self.stop_button.pack()
 
     def launch(self):
         self.window.mainloop()

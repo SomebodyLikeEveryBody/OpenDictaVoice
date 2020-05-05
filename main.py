@@ -2,10 +2,11 @@ import opendictavoice_modules.audio_manager
 import opendictavoice_modules.builded_GUI
 import opendictavoice_modules.voice_recognizer
 import opendictavoice_modules.formatter
+#import opendictavoice_modules.control_with_keyboard
 import threading
 import pyperclip
 import pyautogui
-import keyboard
+
 
 WAV_FILENAME = './recorded.wav'
 RESOURCES_PATH = './resources/'
@@ -35,6 +36,8 @@ def stop_record_then_analyse(p_audio_manager, p_voice_recognizer, p_formatter, p
 
 
 
+
+
 def main():
     audio_manager = opendictavoice_modules.audio_manager.Audio_manager(RESOURCES_PATH)
     voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer(audio_manager)
@@ -42,19 +45,23 @@ def main():
     formatter = opendictavoice_modules.formatter.Formatter([RESOURCES_PATH + 'rewritingrules/LaTEX.txt'])
 
     def recButtonClick(event):
-        gui.switch_buttons(event)
+        gui.buttonStopVisible()
         voice_recognizer.set_language(gui.get_language())   
         launch_record_in_thread(audio_manager)
         
     def stopButtonClick(event):
-        gui.switch_buttons(event)
+        gui.buttonRecVisible()
         stop_record_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILENAME)
     
     gui.rec_button.bind("<Button-1>", recButtonClick)
     gui.stop_button.bind("<Button-1>", stopButtonClick)
 
+ #   opendictavoice_modules.control_with_keyboard.Control_With_KeyBoard(recButtonClick, stopButtonClick)
+    
     #main loop
     gui.launch()
+    
+    
 
     #once main loop broken
     audio_manager.terminate()
