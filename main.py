@@ -2,11 +2,10 @@ import opendictavoice_modules.audio_manager
 import opendictavoice_modules.builded_GUI
 import opendictavoice_modules.voice_recognizer
 import opendictavoice_modules.formatter
-import opendictavoice_modules.control_with_keyboard
+import opendictavoice_modules.keyboard_listener
 import threading
 import pyperclip
 import pyautogui
-
 
 WAV_FILENAME = './recorded.wav'
 RESOURCES_PATH = './resources/'
@@ -55,7 +54,7 @@ def main():
 
     def rec_button_click():
         gui.stop_button_visible()
-        voice_recognizer.set_language(gui.get_language())   
+        voice_recognizer.set_language(gui.get_language())
         launch_record_in_thread(audio_manager)
         
     def stop_button_click():
@@ -68,8 +67,7 @@ def main():
         
     gui.rec_button.bind("<Button-1>", lambda event: rec_button_click())
     gui.stop_button.bind("<Button-1>", lambda event: stop_button_click())
-
-    opendictavoice_modules.control_with_keyboard.Control_With_KeyBoard(rec_button_click, stop_controlled_with_keyBoard)
+    opendictavoice_modules.keyboard_listener.Keyboard_listener(rec_button_click, stop_controlled_with_keyboard)
     
     #main loop
     gui.launch()

@@ -53,11 +53,11 @@ class Builded_GUI:
         ret_menu.language_stringvar = language_stringvar
         return ret_menu
         
-    def button_rec_visible(self):
+    def rec_button_visible(self):
         self.stop_button.pack_forget()
         self.rec_button.pack()
         
-    def button_stop_visible(self):
+    def stop_button_visible(self):
         self.rec_button.pack_forget()
         self.stop_button.pack()
 

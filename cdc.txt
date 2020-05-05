@@ -8,7 +8,8 @@ pas mal, les prochains objectifs sont:
   ==> pour arriver a faire ca, il faut que la fonction stop_record_N_save soit également lancée dans un Thread, et que ca mettre le
       bouton de moulinage, puis une fois qu'elle est terminée, enlever le moulinage et remettre le bouton record dans la fenettre
 
-- 
+- faire en sorte que pour le formatter, on passe en arg juste un repertoire et ca charge tous les fichiers textes
+- faire en sorte de verifier le format des fichiers de formattage et throw un exception si le format est pas bon 
 
 - faire en sorte que ca mette le texte retourné dans le clipboard et que ca fasse un coller, comme ca, ca colle là où il y a le focus
   ==> idealement, ecrire le texte au fur et a mesure
