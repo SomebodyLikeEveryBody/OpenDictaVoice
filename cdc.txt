@@ -20,4 +20,4 @@ pas mal, les prochains objectifs sont:
 - ==> idealement, ecrire le texte au fur et a mesure
 - pouvoir facilement binder ca avec un peripherique (manette de jeu, n'importe quoi)
 - pouvoir configurer le binding facilement depuis l'interface graphique
-- intergration d'une synthese vocale pour diriger le logiciel
+- integration d'une synthese vocale pour diriger le logiciel
