@@ -23,7 +23,7 @@ def stop_record_then_analyse_in_thread(p_audio_manager, p_voice_recognizer, p_fo
 def stop_record_then_analyse(p_audio_manager, p_voice_recognizer, p_formatter, p_filename):
     p_audio_manager.stop_record_N_save(p_filename)
     text = p_voice_recognizer.wav_to_text(p_filename)
-    formatedText = p_formatter.format(text) + ' '
+    formatedText = p_formatter.format(text)
     print('\n\n=========================')
     print("text that was recognized: " + text)
     print("text formatted: " + formatedText)

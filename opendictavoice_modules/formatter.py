@@ -3,7 +3,7 @@ REWRITINGRULES_FILENAME = ['../resources/rewritingrules/LaTEX.txt']
 class Formatter: 
     def __init__(self, p_filenames_list):
         self.rulesfiles = p_filenames_list
-        self.rewritingrules_dictionary = dict()
+        self.rewritingrules_dictionary = {'retour à la ligne ': '\n', 'Retour à la ligne ': '\n'}
 
     #input: a string p_str
     #output: a text that should really be processed (e.g. if the text contains "virgule", then the symbol "," should be typed)
@@ -12,13 +12,10 @@ class Formatter:
         #rewriting rules are reloaded each time so that files can be modified dynamically
         self.load_rewritingrules()
 
-#        if p_str in self.rewritingrules_dictionary:
-#            return self.rewritingrules_dictionary[p_str]
+        p_str = p_str + ' '
         for key in self.rewritingrules_dictionary:
             p_str = p_str.replace(str(key), str(self.rewritingrules_dictionary[key]))
-        
-#        if p_str == 'retour à la ligne':
-#            return '\n'
+   
 
         return p_str
 
