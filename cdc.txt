@@ -8,16 +8,20 @@ pas mal, les prochains objectifs sont:
   ==> pour arriver a faire ca, il faut que la fonction stop_record_N_save soit également lancée dans un Thread, et que ca mettre le
       bouton de moulinage, puis une fois qu'elle est terminée, enlever le moulinage et remettre le bouton record dans la fenettre
 
-- faire en sorte que pour le formatter, on passe en arg juste un repertoire et ca charge tous les fichiers textes
-- faire en sorte de verifier le format des fichiers de formattage et throw une exception si le format est pas bon 
-
 + faire en sorte que ca mette le texte retourné dans le clipboard et que ca fasse un coller, comme ca, ca colle là où il y a le focus
 + faire jouer un son quand stt le ne reconnait pas le texte parlé, plutot que d'avoir un print dans la console
 
+- faire en sorte que pour le formatter, on passe en arg juste un repertoire et ca charge tous les fichiers textes
+- faire en sorte de verifier le format des fichiers de formattage et throw une exception si le format est pas bon 
+
 - faire en sorte de pouvoir faire des enregistrements a la chaine, pour cela il faudra regarder s'il existe un fichier ./recorded_i.wav
   (où i entier naturel, si yen a pas, on considere que le fichier est ./recorded_0.wav, sinon c'est ./recorded_i+1.wav)
+  ==> il y a une problematique d'ordre par contre, genre si j'enregistre un premier texte long, puis stop, puis un texte court,
+      le traitement du texte court sera terminé avant celui du texte long et donc le texte court sera écrit avant celui du texte long malgré
+      le fait que le long ai été enregistré avant le court ==> gérer ca avec une FIFO
 
-- ==> idealement, ecrire le texte au fur et a mesure
+- idealement, ecrire le texte au fur et a mesure avec un système qui reconnait quand on arrete de parler
+
 - pouvoir facilement binder ca avec un peripherique (manette de jeu, n'importe quoi)
 - pouvoir configurer le binding facilement depuis l'interface graphique
 - integration d'une synthese vocale pour diriger le logiciel
