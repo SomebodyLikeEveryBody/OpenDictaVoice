@@ -34,16 +34,7 @@ def stop_record_then_analyse(p_audio_manager, p_voice_recognizer, p_formatter, p
 #    pyautogui.hotkey('ctrl', 'v')
     pynput.keyboard.Controller().type(formatedText)
     
-    
-    
-#same function but with "alt tab" to give the focus to the window you are working in.
-#used when the user clicks on the button (and is not triggering the recording via his/her keyboard)
-#I DISLIKE HAVING DUPLICATED THE CODE
-def stop_record_then_analyse_and_give_focus_in_thread(p_audio_manager, p_voice_recognizer, p_formatter, p_filename):
-    thread_stop_record = threading.Thread(target=stop_record_then_analyse_and_give_focus, args=(p_audio_manager, p_voice_recognizer, p_formatter, p_filename))
-    thread_stop_record.start()
-    
-def stop_record_then_analyse_and_give_focus(p_audio_manager, p_voice_recognizer, p_formatter, p_filename):
+def stop_record_then_analyse(p_audio_manager, p_voice_recognizer, p_formatter, p_filename):
     p_audio_manager.stop_record_N_save(p_filename)
     text = p_voice_recognizer.wav_to_text(p_filename)
     formatedText = p_formatter.format(text)
@@ -52,9 +43,11 @@ def stop_record_then_analyse_and_give_focus(p_audio_manager, p_voice_recognizer,
     print("text formatted: " + formatedText)
     print("(I put it in your editor)")
     print('=========================\n\n')
+    pynput.keyboard.Controller().type(formatedText)
+
+def switch_focus():
     pyautogui.PAUSE = 0.2
     pyautogui.hotkey('alt', 'tab')
-    pynput.keyboard.Controller().type(formatedText)
 
 def main():
     gui = opendictavoice_modules.builded_GUI.Builded_GUI(RESOURCES_PATH)
@@ -72,12 +65,12 @@ def main():
         voice_recognizer.set_language(gui.get_language())
         stop_record_then_analyse_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILEPATH)
         
-    def stop_rec_and_give_focus(p_event=None):
+    def stop_rec(p_event=None):
         gui.rec_button_visible()
-        stop_record_then_analyse_and_give_focus_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILEPATH)
+        stop_record_then_analyse_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILEPATH)
         
     gui.rec_button.bind("<Button-1>", start_rec)
-    gui.stop_button.bind("<Button-1>", stop_rec_and_give_focus)
+    gui.stop_button.bind("<Button-1>", lambda event: [stop_rec(event), switch_focus()])
     opendictavoice_modules.keyboard_listener.Keyboard_listener(start_rec, stop_rec)
     
     #main loop
