@@ -4,7 +4,7 @@ import opendictavoice_modules.voice_recognizer
 import opendictavoice_modules.formatter
 import opendictavoice_modules.keyboard_listener
 import threading
-import pyautogui                   #used to do "alt + tab" for giving again the focus to the current window
+#import pyautogui                   #used to do "alt + tab" for giving again the focus to the current window
 import pynput
 import time
 

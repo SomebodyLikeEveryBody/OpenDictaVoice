@@ -12,11 +12,13 @@ class Formatter:
         #rewriting rules are reloaded each time so that files can be modified dynamically
         self.load_rewritingrules()
 
-        if p_str in self.rewritingrules_dictionary:
-            return self.rewritingrules_dictionary[p_str]        
+#        if p_str in self.rewritingrules_dictionary:
+#            return self.rewritingrules_dictionary[p_str]
+        for key in self.rewritingrules_dictionary:
+            p_str = p_str.replace(str(key), str(self.rewritingrules_dictionary[key]))
         
-        if p_str == 'retour à la ligne':
-            return '\n'
+#        if p_str == 'retour à la ligne':
+#            return '\n'
 
         return p_str
 
