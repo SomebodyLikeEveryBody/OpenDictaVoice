@@ -1,5 +1,4 @@
 import speech_recognition
-import pyperclip
 import os
 
 class Voice_Recognizer:
