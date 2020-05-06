@@ -1,5 +1,15 @@
-comma -> ,
-begin takes picture -> \\begin{tikzpicture}
-begin 6 picture -> \\begin{tikzpicture}
-retour à la ligne -> 
+begin takes picture -> \begin{tikzpicture}
+begin 6 picture -> \begin{tikzpicture}
+
+end takes picture -> \end{tikzpicture}
+end 6 picture -> \end{tikzpicture}
+
+begin center -> \begin{center}
+begin Center -> \begin{center}
+end center -> \end{center}
+hand Center -> \end{center}
+hand center -> \end{center}
+
+backslash -> \
+backlash -> \
 
