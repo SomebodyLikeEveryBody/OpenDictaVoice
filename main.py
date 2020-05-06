@@ -46,8 +46,13 @@ def stop_record_then_analyse(p_audio_manager, p_voice_recognizer, p_formatter, p
     pynput.keyboard.Controller().type(formatedText)
 
 def switch_focus():
-    pyautogui.PAUSE = 0.2
-    pyautogui.hotkey('alt', 'tab')
+#    pyautogui.PAUSE = 0.2
+#    pyautogui.hotkey('alt', 'tab')
+    kb = pynput.keyboard.Controller()
+    kb.press(pynput.keyboard.Key.alt)
+    kb.press(pynput.keyboard.Key.tab)
+    kb.release(pynput.keyboard.Key.alt)
+    kb.release(pynput.keyboard.Key.tab)
 
 def main():
     gui = opendictavoice_modules.builded_GUI.Builded_GUI(RESOURCES_PATH)
@@ -57,16 +62,12 @@ def main():
                                                             RESOURCES_PATH + 'rewritingrules/basic.txt'])
 
     def start_rec(p_event=None):
-        gui.stop_button_visible()
+        gui.set_stop_button_visible()
         launch_record_in_thread(audio_manager)
         
     def stop_rec(p_event=None):
-        gui.rec_button_visible()
+        gui.set_rec_button_visible()
         voice_recognizer.set_language(gui.get_language())
-        stop_record_then_analyse_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILEPATH)
-        
-    def stop_rec(p_event=None):
-        gui.rec_button_visible()
         stop_record_then_analyse_in_thread(audio_manager, voice_recognizer, formatter, WAV_FILEPATH)
         
     gui.rec_button.bind("<Button-1>", start_rec)
