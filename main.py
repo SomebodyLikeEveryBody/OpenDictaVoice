@@ -3,8 +3,8 @@ import opendictavoice_modules.builded_GUI
 import opendictavoice_modules.voice_recognizer
 import opendictavoice_modules.formatter
 import opendictavoice_modules.keyboard_listener
+
 import threading
-#import pyautogui                   #used to do "alt + tab" for giving again the focus to the current window
 import pynput
 import time
 
@@ -32,8 +32,6 @@ def stop_record_then_analyse(p_audio_manager, p_voice_recognizer, p_formatter, p
     pynput.keyboard.Controller().type(formatedText)
 
 def switch_focus():
-#    pyautogui.PAUSE = 0.4
-#    pyautogui.hotkey('alt', 'tab')
     time.sleep(0.2)
     kb = pynput.keyboard.Controller()
     kb.press(pynput.keyboard.Key.alt)

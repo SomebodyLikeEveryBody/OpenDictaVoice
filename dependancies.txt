@@ -1,9 +1,8 @@
-- sudo apt-get install portaudio 
-  or
-  brew install portaudio 
+- pyaudio (pip install pyaudio)
+  |-> portaudio (sudo apt-get install portaudio / brew install portaudio)
 
-- pip install pyaudio
-
-- sudo apt-get install xclip
-
-- pyautogui module
+- keyboard (pip install keyboard)
+- tkinter (sudo apt-get install python3-tk / rien, installation par defaut sous windows et maxOS)
+- wave (pip install wave)
+- speech_recognition (pip install SpeechRecognition)
+- pynput (pip install pynput)
