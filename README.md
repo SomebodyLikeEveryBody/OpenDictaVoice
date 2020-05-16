@@ -2,7 +2,7 @@
 
 ## Description:
 
-A voice dictation program wrote in python to do voice dictation.
+A voice dictation program wrote in **python3** to do voice dictation.
 
 ## How to use:
 
@@ -56,13 +56,14 @@ pip install pynput
 
 Run the shell command:
 ```bash
-python ./main.py
+python3 ./main.py
 ```
 
-It will automatically start to record.
+It will open a window with low opacity that is always in the foreground.
 
-When you are finished, press CTRL + C.
 
-It will print the result on screen.
+Then, put the focus on the element you want to write in (notepad or gedit for example), and when you want to speak, hold **CTRL + SHIFT** keys to launch the record.
 
-Very shortly, it will be pasted in the clipboard or implement more usefull features.
+
+When you release the CTRL + SHIFT keys, it will analyse the recorded sound and write the text.
+
