@@ -2,7 +2,7 @@
 
 ## Description:
 
-A voice dictation program wrote in **python3** to do voice dictation.
+A voice dictation program written in **python3** to do voice dictation.
 
 ## How to use:
 
