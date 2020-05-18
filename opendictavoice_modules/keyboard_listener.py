@@ -19,11 +19,13 @@ class Keyboard_listener:
         listener = keyboard.Listener(
             on_press=self.do_on_keypressed,
             on_release=self.do_on_keyreleased)
+
         listener.start()
         
     def do_on_keypressed(self, key):
         if key == keyboard.Key.ctrl:
             self.ctrl_pressed = True
+
         if key == keyboard.Key.shift:
             self.shift_pressed = True
                 
