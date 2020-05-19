@@ -96,27 +96,27 @@ class Audio_manager:
 
     @property
     def keep_record(self):
-        raise PermissionError("It is not authorized to accessi or modify [keep_record] attribute")
+        raise PermissionError("It is not authorized to access or modify [keep_record] attribute")
         return None
 
     @keep_record.setter
     def keep_record(self):
-        raise PermissionError("It is not authorized to accessi or modify [keep_record] attribute")
+        raise PermissionError("It is not authorized to access or modify [keep_record] attribute")
 
     @property
     def audio_frames(self):
-        raise PermissionError("It is not authorized to accessi or modify [audio_frames] attribute")
+        raise PermissionError("It is not authorized to access or modify [audio_frames] attribute")
         return None
 
     @audio_frames.setter
     def keep_record(self):
-        raise PermissionError("It is not authorized to accessi or modify [audio_frames] attribute")
+        raise PermissionError("It is not authorized to access or modify [audio_frames] attribute")
 
     @property
     def stream(self):
-        raise PermissionError("It is not authorized to accessi or modify [stream] attribute")
+        raise PermissionError("It is not authorized to access or modify [stream] attribute")
         return None
 
     @stream.setter
     def keep_record(self):
-        raise PermissionError("It is not authorized to accessi or modify [stream] attribute")
+        raise PermissionError("It is not authorized to access or modify [stream] attribute")

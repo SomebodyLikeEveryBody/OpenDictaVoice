@@ -34,14 +34,13 @@ class Voice_Recognizer:
         return ret_str
 
 
-    def wav_to_text(self, p_filename):
+    def get_text_from_wav(self, p_filename):
         recognized_text = self._wav_to_text(p_filename)
         os.remove(p_filename)
         return recognized_text
 
-
-    def set_language(self, language):
-        self._language = language
+    def set_language(self, p_language):
+        self._language = p_language
 
     ########################
     # Attribute management #
@@ -53,13 +52,14 @@ class Voice_Recognizer:
     
     @language.setter
     def language (self, p_value):
-        self._language = str(p_value)
+        raise PermissionError("You need to use method [set_language()] to modify language attribute")
 
     @property
     def audio_manager(self):
-        return self._audio_manager
+        raise PermissionError("It is not authorized to access or modify [audio_manager] attribute")
+        return None
     
     @audio_manager.setter
     def audio_manager(self, p_value):
-        self._audio_manager = p_value
+        raise PermissionError("It is not authorized to access or modify [audio_manager] attribute")
 
