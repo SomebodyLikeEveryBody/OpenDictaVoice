@@ -5,23 +5,14 @@ WINDOW_HEIGHT = 150
 
 class Builded_GUI:
     def __init__(self, p_resources_path):
-        self.resources_path = p_resources_path
+        self._resources_path = str(p_resources_path)
         self._window = self.build_window()
-        self.rec_button = self.build_rec_button()
-        self.stop_button = self.build_stop_button()
-        self.language_chooser_menu = self.build_language_chooser()
+        self._rec_button = self.build_rec_button()
+        self._stop_button = self.build_stop_button()
+        self._language_chooser_menu = self.build_language_chooser()
 
-        self.language_chooser_menu.pack()
-        self.rec_button.pack()
-
-    @property
-    def window(self):
-        raise PermissionError("It is not authorized to access or modify [window] attribute")
-        return None
-
-    @window.setter
-    def window(self, p_value):
-        raise PermissionError("It is not authorized to access or modify [window] attribute")
+        self._language_chooser_menu.pack()
+        self._rec_button.pack()
 
     def build_window(self):
         ret_window = tkinter.Tk()
@@ -39,7 +30,7 @@ class Builded_GUI:
         self._window.destroy()
 
     def build_rec_button(self):
-        img = tkinter.PhotoImage(file=self.resources_path + 'imgs/record.png')
+        img = tkinter.PhotoImage(file=self._resources_path + 'imgs/record.png')
         ret_button = tkinter.Button(self._window, image=img)
         ret_button.image = img
         ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT) 
@@ -47,7 +38,7 @@ class Builded_GUI:
         return ret_button
 
     def build_stop_button(self):
-        img = tkinter.PhotoImage(file=self.resources_path + 'imgs/stop_record.png')
+        img = tkinter.PhotoImage(file=self._resources_path + 'imgs/stop_record.png')
         ret_button = tkinter.Button(self._window, image=img)
         ret_button.image = img
         ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
@@ -63,16 +54,63 @@ class Builded_GUI:
         return ret_menu
         
     def set_rec_button_visible(self):
-        self.stop_button.pack_forget()
-        self.rec_button.pack()
+        self._stop_button.pack_forget()
+        self._rec_button.pack()
         
     def set_stop_button_visible(self):
-        self.rec_button.pack_forget()
-        self.stop_button.pack()
+        self._rec_button.pack_forget()
+        self._stop_button.pack()
 
     def launch(self):
         self._window.mainloop()
 
     #returns the string that represents the current language, e.g. "fr" or "en"
     def get_language(self):
-        return self.language_chooser_menu.language_stringvar.get()
+        return self._language_chooser_menu.language_stringvar.get()
+
+
+    ########################
+    # Attribute management #
+    ########################
+
+    @property
+    def resources_path(self):
+        return (self._resources_path)
+
+    @resources_path.setter
+    def resources_path(self, p_value):
+        self._resources_path = str(p_value)
+
+    @property
+    def window(self):
+        raise PermissionError("It is not authorized to access or modify [window] attribute")
+        return None
+
+    @window.setter
+    def window(self, p_value):
+        raise PermissionError("It is not authorized to access or modify [window] attribute")
+
+    @property
+    def rec_button(self):
+        return self._rec_button
+
+    @rec_button.setter
+    def rec_button(self, p_value):
+        raise PermissionError("It is not authorized to modify [rec_button] attribute")
+
+    @property
+    def stop_button(self):
+        return self._stop_button
+
+    @stop_button.setter
+    def stop_button(self, p_value):
+        raise PermissionError("It is not authorized to modify [stop_button] attribute")
+
+    @property
+    def language_chooser_menu(self):
+        raise PermissionError("It is not authorized to access or modify [language_chooser_menu] attribute")
+        return None
+
+    @language_chooser_menu.setter
+    def language_chooser_menu(self, p_value):
+        raise PermissionError("It is not authorized to access or modify [language_chooser_menu] attribute")

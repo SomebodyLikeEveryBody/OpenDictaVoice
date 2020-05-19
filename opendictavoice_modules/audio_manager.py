@@ -9,7 +9,7 @@ RECORD_SECONDS = 2
  
 class Audio_manager:
     def __init__(self, p_resources_path):
-        self.resources_path = p_resources_path
+        self._resources_path = str(p_resources_path)
         self._pyaudio_obj = pyaudio.PyAudio()
         self._keep_record = False
         self._audio_frames = []
@@ -71,12 +71,20 @@ class Audio_manager:
         temp__pyaudio_obj.terminate()
 
     def play_error_sound(self):
-        self.play_wav(self.resources_path + '/sounds/error.wav')
+        self.play_wav(self._resources_path + '/sounds/error.wav')
 
 
     ########################
     # Attribute management #
     ########################
+
+    @property
+    def resources_path(self):
+        return self._resources_path
+    
+    @resources_path.setter
+    def resources_path(self, p_value):
+        self._resources_path = str(p_value)
 
     @property
     def pyaudio_obj(self):
