@@ -43,22 +43,24 @@ def switch_focus():
 
 def main():
     gui = opendictavoice_modules.builded_GUI.Builded_GUI(RESOURCES_PATH)
-    audio_manager = opendictavoice_modules.audio_manager.Audio_manager(RESOURCES_PATH)
-    voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer(audio_manager)
     formatter = opendictavoice_modules.formatter.Formatter(RESOURCES_PATH, REWRITINGRULES_FILES)
+
+    audio_manager = opendictavoice_modules.audio_manager.Audio_manager(RESOURCES_PATH)
+    voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer()
+
     def start_rec(p_event=None):
         gui.set_stop_button_visible()
         launch_record_in_thread(audio_manager)
-        
+
     def stop_rec(p_event=None):
         gui.set_rec_button_visible()
         voice_recognizer.set_language(gui.get_language())
         stop_record_then_analyse_in_thread(audio_manager, voice_recognizer, formatter, RESOURCES_PATH + '/temp/recorded.wav')
-        
+
     gui.rec_button.bind("<Button-1>", start_rec)
     gui.stop_button.bind("<Button-1>", lambda event: [stop_rec(event), switch_focus()])
     opendictavoice_modules.keyboard_listener.Keyboard_listener(start_rec, stop_rec)
-    
+
     #main loop
     gui.launch()
 

@@ -1,12 +1,12 @@
 import speech_recognition
 import os
+import pyaudio
 
 class Voice_Recognizer:
 
     #by default the language is french
-    def __init__(self, p_audio_manager):
-        self._language = 'fr-FR'
-        self._audio_manager = p_audio_manager
+    def __init__(self, p_language='fr-FR'):
+        self._language = p_language
 
     #input: p_wavpath is the path to a .wav file
     #output: the recognized text
@@ -24,7 +24,7 @@ class Voice_Recognizer:
                 ret_str = recognizer.recognize_google(audio, language=self._language)
             except speech_recognition.UnknownValueError:
                 print("Google could not understand audio")
-                self._audio_manager.play_error_sound()
+                self.play_error_sound()
             except speech_recognition.RequestError as e:
                 print("Google error; {0}".format(e))
 
@@ -42,6 +42,26 @@ class Voice_Recognizer:
     def set_language(self, p_language):
         self._language = p_language
 
+    def play_wav(self, p_filename):
+        temp__pyaudio_obj = pyaudio.PyAudio()
+        wf = wave.open(p_filename, 'rb')
+        stream = temp__pyaudio_obj.open(format=temp__pyaudio_obj.get_format_from_width(wf.getsampwidth()),
+                    channels=wf.getnchannels(),
+                    rate=wf.getframerate(),
+                    output=True)
+
+        data = wf.readframes(CHUNK)
+        while len(data) > 0:
+            stream.write(data)
+            data = wf.readframes(CHUNK)
+
+        stream.stop_stream()
+        stream.close()
+        temp__pyaudio_obj.terminate()
+
+    def play_error_sound(self):
+        self.play_wav(self._resources_path + '/sounds/error.wav')
+
     ########################
     # Attribute management #
     ########################
@@ -49,17 +69,7 @@ class Voice_Recognizer:
     @property
     def language(self):
         return self._language
-    
+
     @language.setter
     def language (self, p_value):
         raise PermissionError("You need to use method [set_language()] to modify language attribute")
-
-    @property
-    def audio_manager(self):
-        raise PermissionError("It is not authorized to access or modify [audio_manager] attribute")
-        return None
-    
-    @audio_manager.setter
-    def audio_manager(self, p_value):
-        raise PermissionError("It is not authorized to access or modify [audio_manager] attribute")
-
