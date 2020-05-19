@@ -5,8 +5,8 @@ class Voice_Recognizer:
 
     #by default the language is french
     def __init__(self, p_audio_manager):
-        self.language = 'fr-FR'
-        self.audio_manager = p_audio_manager
+        self._language = 'fr-FR'
+        self._audio_manager = p_audio_manager
 
     #input: p_wavpath is the path to a .wav file
     #output: the recognized text
@@ -21,10 +21,10 @@ class Voice_Recognizer:
 
             # recognize speech using Google_STT --> We'll see if we continue with another STT engine
             try:
-                ret_str = recognizer.recognize_google(audio, language=self.language)
+                ret_str = recognizer.recognize_google(audio, language=self._language)
             except speech_recognition.UnknownValueError:
                 print("Google could not understand audio")
-                self.audio_manager.play_error_sound()
+                self._audio_manager.play_error_sound()
             except speech_recognition.RequestError as e:
                 print("Google error; {0}".format(e))
 
@@ -41,4 +41,25 @@ class Voice_Recognizer:
 
 
     def set_language(self, language):
-        self.language = language
+        self._language = language
+
+    ########################
+    # Attribute management #
+    ########################
+
+    @property
+    def language(self):
+        return self._language
+    
+    @language.setter
+    def language (self, p_value):
+        self._language = str(p_value)
+
+    @property
+    def audio_manager(self):
+        return self._audio_manager
+    
+    @audio_manager.setter
+    def audio_manager(self, p_value):
+        self._audio_manager = p_value
+

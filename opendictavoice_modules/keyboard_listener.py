@@ -91,4 +91,4 @@ class Keyboard_listener:
     @do_when_untriggered.setter
     def do_when_untriggered(self, p_value):
         if (type(p_value) != type(self.__init__)):
-            raise PermissionError("[do_when_untriggered] attribute must be affected with a function type value")
+            raise ValueError("[do_when_untriggered] attribute must be affected with a function type value")
