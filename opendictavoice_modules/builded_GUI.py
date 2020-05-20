@@ -52,11 +52,11 @@ class Builded_GUI:
         ret_menu = tkinter.OptionMenu(self._window, language_stringvar, *choices)
         ret_menu.language_stringvar = language_stringvar
         return ret_menu
-        
+
     def set_rec_button_visible(self):
         self._stop_button.pack_forget()
         self._rec_button.pack()
-        
+
     def set_stop_button_visible(self):
         self._rec_button.pack_forget()
         self._stop_button.pack()

@@ -1,12 +1,14 @@
+import opendictavoice_modules.audio_manager
+
 import speech_recognition
 import os
-import pyaudio
 
 class Voice_Recognizer:
 
     #by default the language is french
-    def __init__(self, p_language='fr-FR'):
+    def __init__(self, p_resources_path, p_language='fr-FR'):
         self._language = p_language
+        self._resources_path = p_resources_path
 
     #input: p_wavpath is the path to a .wav file
     #output: the recognized text
@@ -42,25 +44,8 @@ class Voice_Recognizer:
     def set_language(self, p_language):
         self._language = p_language
 
-    def play_wav(self, p_filename):
-        temp__pyaudio_obj = pyaudio.PyAudio()
-        wf = wave.open(p_filename, 'rb')
-        stream = temp__pyaudio_obj.open(format=temp__pyaudio_obj.get_format_from_width(wf.getsampwidth()),
-                    channels=wf.getnchannels(),
-                    rate=wf.getframerate(),
-                    output=True)
-
-        data = wf.readframes(CHUNK)
-        while len(data) > 0:
-            stream.write(data)
-            data = wf.readframes(CHUNK)
-
-        stream.stop_stream()
-        stream.close()
-        temp__pyaudio_obj.terminate()
-
     def play_error_sound(self):
-        self.play_wav(self._resources_path + '/sounds/error.wav')
+        opendictavoice_modules.audio_manager.Audio_manager(self._resources_path).play_error_sound()
 
     ########################
     # Attribute management #

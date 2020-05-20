@@ -19,17 +19,25 @@ def launch_record_in_thread(p_audio_manager):
     thread_record.start()
 
 def analyse_wav_in_thread(p_voice_recognizer, p_formatter, p_filename):
+
+    #here too we will pass the index of the file in the fifo instead of the filename, like 1
     thread_stop_record = threading.Thread(target=analyse_wav, args=(p_voice_recognizer, p_formatter, p_filename))
     thread_stop_record.start()
 
 def analyse_wav(p_voice_recognizer, p_formatter, p_filename):
     text = p_voice_recognizer.get_text_from_wav(p_filename)
     formatedText = p_formatter.format(text)
+
+    #once text is recognized (or not), it is stored in the fifo list in the specific dict of the file.
+    #Beware of the content of the file to ensure chars are printable to avoid security problems
     print('\n\n=========================')
     print("text that was recognized: " + text)
     print("text formatted: " + formatedText)
     print("(I put it in your editor)")
     print('=========================\n\n')
+
+    #this action will be done with the fifo, like we parse the fifo list, when the dict state is "DONE",
+    #we pynput, else, we wait
     pynput.keyboard.Controller().type(formatedText)
 
 def switch_focus():
@@ -45,13 +53,13 @@ def main():
     formatter = opendictavoice_modules.formatter.Formatter(RESOURCES_PATH, REWRITINGRULES_FILES)
     audio_manager = opendictavoice_modules.audio_manager.Audio_manager(RESOURCES_PATH)
 
-    voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer()
+    voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer(RESOURCES_PATH)
 
     #audio_manager is only needed to record here, so we can have one audio_manager
     #but we probably will need multiple voice_recognizers, one per file to analyse in threads
     #I see things like this: wonce record is stopped, we launch analize in thread with a generated
     #voice recognizer, and wonce it's done, we notify the FIFO
-    #the FIFO might be a list of dicts, like [{id: 42, state: "PROCESSING", value: ''}, {id: 43, state: 'DONE', value: 'pouet'}, {id, state, value}]
+    #the FIFO might be a list of dicts, like [{id: 42, state: "PROCESSING", value: ''}, {id: 43, state: 'DONE', value: 'pouet'}, {id: 44, state: 'DONE', value: "hello tout le monde"}]
     #id is an int and state might be "PROCESSING" or "DONE", value is the text returned and empty if processing
     #the thing is, how to process the result of the FIFO without an infinite loop ?
 
@@ -62,7 +70,11 @@ def main():
     def stop_rec(p_event=None):
         gui.set_rec_button_visible()
         voice_recognizer.set_language(gui.get_language())
+
+        #FIFO object will return a number that will be used to name the file, like recorded_1.wav
         audio_manager.stop_record_N_save(RESOURCES_PATH + '/temp/recorded.wav')
+
+        #then, instead of passing the filename as arg, we pass the index of the file in the fifo, like 1
         analyse_wav_in_thread(voice_recognizer, formatter, RESOURCES_PATH + '/temp/recorded.wav')
 
     gui.rec_button.bind("<Button-1>", start_rec)
