@@ -43,10 +43,10 @@ def analyse_wav(p_voice_recognizer, p_formatter, p_fifo, p_id):
         #once text is recognized (or not), it is stored in the fifo list in the specific dict of the list.
         #Beware of the content of the list to ensure chars are printable to avoid security problems
         p_fifo.set_process_value(p_id, text)
-        write_recognized_texts(p_fifo, p_formatter)
+        write_fifo_texts(p_fifo, p_formatter)
 
 
-def write_recognized_texts(p_fifo, p_formatter):
+def write_fifo_texts(p_fifo, p_formatter):
 
         print(p_fifo)
 

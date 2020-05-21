@@ -11,7 +11,7 @@ class Voice_Recognizer:
     #input: p_wavpath is the path to a .wav file
     #output: the recognized text
     #this function is private and does not delete the wav file
-    def _wav_to_text(self, p_wavpath):
+    def get_text_from_wav(self, p_wavpath):
         ret_str = None
 
         try:
@@ -32,10 +32,6 @@ class Voice_Recognizer:
 
         return ret_str
 
-
-    def get_text_from_wav(self, p_filename):
-        recognized_text = self._wav_to_text(p_filename)
-        return recognized_text
 
     def set_language(self, p_language):
         self._language = p_language
