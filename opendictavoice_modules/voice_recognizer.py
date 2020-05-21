@@ -6,15 +6,14 @@ import os
 class Voice_Recognizer:
 
     #by default the language is french
-    def __init__(self, p_resources_path, p_language='fr-FR'):
+    def __init__(self, p_language='fr-FR'):
         self._language = p_language
-        self._resources_path = p_resources_path
 
     #input: p_wavpath is the path to a .wav file
     #output: the recognized text
     #this function is private and does not delete the wav file
     def _wav_to_text(self, p_wavpath):
-        ret_str = ""
+        ret_str = None
 
         try:
             recognizer = speech_recognition.Recognizer()
@@ -26,7 +25,6 @@ class Voice_Recognizer:
                 ret_str = recognizer.recognize_google(audio, language=self._language)
             except speech_recognition.UnknownValueError:
                 print("Google could not understand audio")
-                self.play_error_sound()
             except speech_recognition.RequestError as e:
                 print("Google error; {0}".format(e))
 
@@ -43,9 +41,6 @@ class Voice_Recognizer:
 
     def set_language(self, p_language):
         self._language = p_language
-
-    def play_error_sound(self):
-        opendictavoice_modules.audio_manager.Audio_manager(self._resources_path).play_error_sound()
 
     ########################
     # Attribute management #

@@ -19,16 +19,19 @@ def launch_record_in_thread(p_audio_manager):
     thread_record = threading.Thread(target=p_audio_manager.start_record)
     thread_record.start()
 
-def analyse_wav_in_thread(p_voice_recognizer, p_formatter, p_filename):
+def analyse_wav_in_thread(p_voice_recognizer, p_formatter, p_id):
 
     #here too we will pass the index of the file in the fifo instead of the filename, like 1
-    thread_stop_record = threading.Thread(target=analyse_wav, args=(p_voice_recognizer, p_formatter, p_filename))
+    thread_stop_record = threading.Thread(target=analyse_wav, args=(p_voice_recognizer, p_formatter, p_id))
     thread_stop_record.start()
 
-def analyse_wav(p_voice_recognizer, p_formatter, p_filename):
+def analyse_wav(p_voice_recognizer, p_formatter, p_id):
 
     #processing
-    text = p_voice_recognizer.get_text_from_wav(p_filename)
+    filepath = RESOURCES_PATH + '/temp/recorded_' + str(p_id) + '.wav'
+    text = p_voice_recognizer.get_text_from_wav(opendictavoice_modules.audio_manager.Audio_manager(self._resources_path).play_error_sound()filepath)
+    if text is None:
+        opendictavoice_modules.audio_manager.Audio_manager(RESOURCES_PATH).play_error_sound()
 
     #once text is recognized (or not), it is stored in the fifo list in the specific dict of the list.
     #Beware of the content of the list to ensure chars are printable to avoid security problems
@@ -73,7 +76,7 @@ def main():
 
     def stop_rec(p_event=None):
         gui.set_rec_button_visible()
-        voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer(RESOURCES_PATH)
+        voice_recognizer = opendictavoice_modules.voice_recognizer.Voice_Recognizer()
         voice_recognizer.set_language(gui.get_language())
 
         #FIFO object will return a number that will be used to name the file, like recorded_1.wav
@@ -81,7 +84,7 @@ def main():
         audio_manager.stop_record_N_save(RESOURCES_PATH + '/temp/recorded_' + str(index) +'.wav')
 
         #then, instead of passing the filename as arg, we pass the index of the file in the fifo, like 1
-        analyse_wav_in_thread(voice_recognizer, formatter, RESOURCES_PATH + '/temp/recorded_' + str(index) + '.wav')
+        analyse_wav_in_thread(voice_recognizer, formatter, index)
         print(fifo.get_list())
 
     gui.rec_button.bind("<Button-1>", start_rec)
