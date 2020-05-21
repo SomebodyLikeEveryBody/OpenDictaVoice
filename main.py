@@ -27,7 +27,7 @@ def analyse_wav_in_thread(p_voice_recognizer, p_formatter, p_fifo, p_id):
 
 def analyse_wav(p_voice_recognizer, p_formatter, p_fifo, p_id):
 
-    print(p_fifo.get_list())
+    print(p_fifo)
     #processing
     filepath = RESOURCES_PATH + '/temp/recorded_' + str(p_id) + '.wav'
     text = p_voice_recognizer.get_text_from_wav(filepath)
@@ -43,10 +43,10 @@ def analyse_wav(p_voice_recognizer, p_formatter, p_fifo, p_id):
 
 def write_recognized_texts(p_fifo, p_formatter):
 
-        print(p_fifo.get_list())
+        print(p_fifo)
 
-        while (p_fifo.get_list() != []):
-            dict_process = p_fifo.get_list()[0]
+        while (not p_fifo.is_empty()):
+            dict_process = p_fifo[0]
 
             if (dict_process['state'] == 'DONE'):
                 text = dict_process['value']
@@ -65,7 +65,7 @@ def write_recognized_texts(p_fifo, p_formatter):
             else:
                 break
 
-        print(p_fifo.get_list())
+        print(p_fifo)
 
 
 
