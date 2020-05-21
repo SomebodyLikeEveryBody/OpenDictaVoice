@@ -27,6 +27,7 @@ def analyse_wav_in_thread(p_voice_recognizer, p_formatter, p_fifo, p_id):
 
 def analyse_wav(p_voice_recognizer, p_formatter, p_fifo, p_id):
 
+    print(p_fifo.get_list())
     #processing
     filepath = RESOURCES_PATH + '/temp/recorded_' + str(p_id) + '.wav'
     text = p_voice_recognizer.get_text_from_wav(filepath)
@@ -39,17 +40,19 @@ def analyse_wav(p_voice_recognizer, p_formatter, p_fifo, p_id):
         #Beware of the content of the list to ensure chars are printable to avoid security problems
         formated_text = p_formatter.format(text)
         p_fifo.set_process_value(p_id, formated_text)
+        print(p_fifo.get_list())
 
+        #write value and take off from the fifo
         print('\n\n=========================')
         print("text that was recognized: " + text)
         print("text formatted: " + formated_text)
         print("(I put it in your editor)")
         print('=========================\n\n')
 
-        #this action will be done with the fifo, like we parse the fifo list, when the dict state is "DONE",
-        #we pynput, else, we wait
         pynput.keyboard.Controller().type(formated_text)
+        p_fifo.remove_process(p_id)
 
+    print(p_fifo.get_list())
 
 
 def switch_focus():
@@ -90,7 +93,6 @@ def main():
 
         #then, instead of passing the filename as arg, we pass the index of the file in the fifo, like 1
         analyse_wav_in_thread(voice_recognizer, formatter, fifo, index)
-        print(fifo.get_list())
 
     gui.rec_button.bind("<Button-1>", start_rec)
     gui.stop_button.bind("<Button-1>", lambda event: [stop_rec(event), switch_focus()])
