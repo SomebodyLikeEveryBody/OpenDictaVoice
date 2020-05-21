@@ -1,7 +1,6 @@
 import opendictavoice_modules.audio_manager
 
 import speech_recognition
-import os
 
 class Voice_Recognizer:
 
@@ -36,7 +35,6 @@ class Voice_Recognizer:
 
     def get_text_from_wav(self, p_filename):
         recognized_text = self._wav_to_text(p_filename)
-        os.remove(p_filename)
         return recognized_text
 
     def set_language(self, p_language):

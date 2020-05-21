@@ -8,6 +8,7 @@ import opendictavoice_modules.fifo
 import threading
 import pynput
 import time
+import os
 
 RESOURCES_PATH = './resources/'
 REWRITINGRULES_FILES = [
@@ -19,11 +20,13 @@ def launch_record_in_thread(p_audio_manager):
     thread_record = threading.Thread(target=p_audio_manager.start_record)
     thread_record.start()
 
+
 def analyse_wav_in_thread(p_voice_recognizer, p_formatter, p_fifo, p_id):
 
     #here too we will pass the index of the file in the fifo instead of the filename, like 1
     thread_stop_record = threading.Thread(target=analyse_wav, args=(p_voice_recognizer, p_formatter, p_fifo, p_id))
     thread_stop_record.start()
+
 
 def analyse_wav(p_voice_recognizer, p_formatter, p_fifo, p_id):
 
@@ -31,6 +34,7 @@ def analyse_wav(p_voice_recognizer, p_formatter, p_fifo, p_id):
     #processing
     filepath = RESOURCES_PATH + '/temp/recorded_' + str(p_id) + '.wav'
     text = p_voice_recognizer.get_text_from_wav(filepath)
+    os.remove(filepath)
     if text is None:
         opendictavoice_modules.audio_manager.Audio_manager(RESOURCES_PATH).play_error_sound()
         p_fifo.remove_process(p_id)
@@ -40,6 +44,7 @@ def analyse_wav(p_voice_recognizer, p_formatter, p_fifo, p_id):
         #Beware of the content of the list to ensure chars are printable to avoid security problems
         p_fifo.set_process_value(p_id, text)
         write_recognized_texts(p_fifo, p_formatter)
+
 
 def write_recognized_texts(p_fifo, p_formatter):
 
@@ -68,7 +73,6 @@ def write_recognized_texts(p_fifo, p_formatter):
         print(p_fifo)
 
 
-
 def switch_focus():
     time.sleep(0.2)
     kb = pynput.keyboard.Controller()
@@ -76,6 +80,7 @@ def switch_focus():
     kb.press(pynput.keyboard.Key.tab)
     kb.release(pynput.keyboard.Key.alt)
     kb.release(pynput.keyboard.Key.tab)
+
 
 def main():
     gui = opendictavoice_modules.builded_GUI.Builded_GUI(RESOURCES_PATH)
