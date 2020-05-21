@@ -38,21 +38,35 @@ def analyse_wav(p_voice_recognizer, p_formatter, p_fifo, p_id):
     else:
         #once text is recognized (or not), it is stored in the fifo list in the specific dict of the list.
         #Beware of the content of the list to ensure chars are printable to avoid security problems
-        formated_text = p_formatter.format(text)
-        p_fifo.set_process_value(p_id, formated_text)
+        p_fifo.set_process_value(p_id, text)
+        write_recognized_texts(p_fifo, p_formatter)
+
+def write_recognized_texts(p_fifo, p_formatter):
+
         print(p_fifo.get_list())
 
-        #write value and take off from the fifo
-        print('\n\n=========================')
-        print("text that was recognized: " + text)
-        print("text formatted: " + formated_text)
-        print("(I put it in your editor)")
-        print('=========================\n\n')
+        while (p_fifo.get_list() != []):
+            dict_process = p_fifo.get_list()[0]
 
-        pynput.keyboard.Controller().type(formated_text)
-        p_fifo.remove_process(p_id)
+            if (dict_process['state'] == 'DONE'):
+                text = dict_process['value']
+                formated_text = p_formatter.format(text)
 
-    print(p_fifo.get_list())
+                #write value and take off from the fifo
+                print('\n\n=========================')
+                print("text that was recognized: " + text)
+                print("text formatted: " + formated_text)
+                print("(I put it in your editor)")
+                print('=========================\n\n')
+
+                pynput.keyboard.Controller().type(formated_text)
+                p_fifo.remove_process(dict_process['id'])
+
+            else:
+                break
+
+        print(p_fifo.get_list())
+
 
 
 def switch_focus():
