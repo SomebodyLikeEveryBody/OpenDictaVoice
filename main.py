@@ -73,7 +73,7 @@ def main():
     #voice recognizer, and wonce it's done, we notify the FIFO
     #the FIFO might be a list of dicts, like [{id: 42, state: "PROCESSING", value: ''}, {id: 43, state: 'DONE', value: 'pouet'}, {id: 44, state: 'DONE', value: "hello tout le monde"}]
     #id is an int and state might be "PROCESSING" or "DONE", value is the text returned and empty if processing
-    #the thing is, how to process the result of the FIFO without an infinite loop ?
+    #the thing is, how to process the result of the FIFO without an infinite loop ? Or signals
 
     def start_rec(p_event=None):
         gui.set_stop_button_visible()
