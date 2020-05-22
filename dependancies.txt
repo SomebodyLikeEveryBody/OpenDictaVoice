@@ -1,8 +1,7 @@
-- pyaudio (pip install pyaudio)
-  |-> portaudio (sudo apt-get install portaudio / brew install portaudio)
-
-- keyboard (pip install keyboard)
-- tkinter (sudo apt-get install python3-tk / rien, installation par defaut sous windows et maxOS)
-- wave (pip install wave)
-- speech_recognition (pip install SpeechRecognition)
-- pynput (pip install pynput)
+keyboard==0.13.5
+PyAudio==0.2.11
+pynput==1.6.8
+python-xlib==0.27
+six==1.15.0
+SpeechRecognition==3.8.1
+Wave==0.0.2
