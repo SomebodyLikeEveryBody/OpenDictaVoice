@@ -46,26 +46,23 @@ To install it, run the shell command:
 pip install SpeechRecognition
 ```
 
-2) Pyaudio: To install it, run the shell command: 
-- pyaudio
+2) **Pyaudio:** To install it, run the shell command: 
 ```bash
 pip install pyaudio
 ```
 
-3) Keyboard: To install it, run the shell command:
-- keyboard
+3) **Keyboard:** To install it, run the shell command:
 ```bash
 pip install keyboard
 ```
 
-4) Wave: To install it, run the shell command:
-- wave
+4) **Wave:** To install it, run the shell command:
+
 ```bash
 pip install wave
 ```
 
-5) Pynpu: To install it, run the shell command:
-- pynput
+5) **Pynput:** To install it, run the shell command:
 ```bash
 pip install pynput
 ```
