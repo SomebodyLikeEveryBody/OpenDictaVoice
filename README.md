@@ -15,7 +15,30 @@ git clone https://gitlab.com/Sleb/opendictavoice.git
 
 ### step 2: Install dependencies
 
-The OpenDictaVoice program uses **SpeechRecognotion** module to work, wich is available here: 
+
+If you are using **Linux or MacOS**, it is necessary to install **portaudio** so that Python will be able to use the microphone once you allow it.
+To install it, run the shell command:
+```bash
+sudo apt-get install portaudio
+```
+
+secondly, if you are using **Linux**, it is necessary to install **tkinter for python3** (which is installed by default on Windows and MacOs).
+To install it, run the shell command:
+```bash
+sudo apt-get install python3-tk
+```
+
+
+Thirdly, OpenDictaVoice need the following modules installed to work (speechRecognition, pyaudio, keyboard, wave, pynput)
+
+**You can install all dependancies automatically** by running the command
+```bash
+pip install -r ./dependencies.txt
+```
+
+**But if you prefer to do it manually**, just follow steps bellow:
+
+1) The OpenDictaVoice program uses **SpeechRecognotion** module to work, wich is available here:
 [https://pypi.org/project/SpeechRecognition/](https://pypi.org/project/SpeechRecognition/)
 
 To install it, run the shell command:
@@ -23,35 +46,27 @@ To install it, run the shell command:
 pip install SpeechRecognition
 ```
 
-Secondly, if you are using **Linux or MacOS**, it is necessary to install **portaudio** so that Python will be able to use the microphone once you allow it.
-To install it, run the shell command:
-```bash
-sudo apt-get install portaudio
-```
-
-Thirdly, if you are using **Linux**, it is necessary to install **tkinter for python3** (which is installed by default on Windows and MacOs).
-To install it, run the shell command:
-```bash
-sudo apt-get install python3-tk
-```
-
-And finally, OpenDictaVoice need the following modules installed to work:
-- pyaudio
+2) **Pyaudio:** To install it, run the shell command: 
 ```bash
 pip install pyaudio
 ```
-- keyboard
+
+3) **Keyboard:** To install it, run the shell command:
 ```bash
 pip install keyboard
 ```
-- wave
+
+4) **Wave:** To install it, run the shell command:
+
 ```bash
 pip install wave
 ```
-- pynput
+
+5) **Pynput:** To install it, run the shell command:
 ```bash
 pip install pynput
 ```
+
 ### Step 3: run the program
 
 Run the shell command:
