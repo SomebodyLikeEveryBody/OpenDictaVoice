@@ -36,7 +36,7 @@ Thirdly, OpenDictaVoice need the following modules installed to work (speechReco
 pip install -r ./dependencies.txt
 ```
 
-But if you prefer to do it manually, just follow steps bellow:
+**But if you prefer to do it manually**, just follow steps bellow:
 
 1) The OpenDictaVoice program uses **SpeechRecognotion** module to work, wich is available here:
 [https://pypi.org/project/SpeechRecognition/](https://pypi.org/project/SpeechRecognition/)
