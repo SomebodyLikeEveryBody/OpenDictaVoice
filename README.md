@@ -33,7 +33,7 @@ Thirdly, OpenDictaVoice need the following modules installed to work (speechReco
 
 **You can install all dependancies automatically** by running the command
 ```bash
-pip install -r ./dependencies.txt
+pip install -r ./dependancies.txt
 ```
 
 **But if you prefer to do it manually**, just follow steps bellow:
