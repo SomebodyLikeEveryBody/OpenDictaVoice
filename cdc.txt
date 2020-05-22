@@ -25,4 +25,3 @@ pas mal, les prochains objectifs sont:
 - pouvoir facilement binder ca avec un peripherique (manette de jeu, n'importe quoi)
 - pouvoir configurer le binding facilement depuis l'interface graphique
 
-- 
