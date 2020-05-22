@@ -27,8 +27,6 @@ class Main_App():
 
 
     def analyse_wav_in_thread(self, p_voice_recognizer, p_id):
-
-        #here too we will pass the index of the file in the fifo instead of the filename, like 1
         thread_stop_record = threading.Thread(target=self.analyse_wav, args=(p_voice_recognizer, p_id))
         thread_stop_record.start()
 
@@ -54,7 +52,6 @@ class Main_App():
     def write_fifo_texts(self):
 
         print(self.fifo)
-
         while (not self.fifo.is_empty()):
             dict_process = self.fifo[0]
 
