@@ -1,7 +1,4 @@
 """
-    main Module
-    ===========
-
     Entry point of OpenDictaVoice Software
 
     There are 2 constants that can be modified:
@@ -24,11 +21,11 @@ REWRITINGRULES_FILES = [
 
 def main():
     """
-        main()
-        ======
-
         Entry point of OpenDictaVoice Software
         It uses main_app module, which is the whole OpenDictaVoice's wrapper module
+
+        :return: None
+        :rtype: None
     """
 
     main_app = opendictavoice_modules.main_app.Main_App(RESOURCES_PATH, REWRITINGRULES_FILES)
