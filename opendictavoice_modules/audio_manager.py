@@ -1,3 +1,16 @@
+# -*- coding: utf-8 -*-
+
+"""
+    Titre du module
+    ===============
+
+    blablabla
+
+    Constants explanations
+"""
+
+
+
 import pyaudio
 import wave
 
@@ -5,10 +18,28 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 2
 RATE = 44100
 CHUNK = 1024
-RECORD_SECONDS = 2
 
 class Audio_manager:
+    """
+        Class Name
+        ==========
+
+        Class explanation, and brief listing of methods and attributes
+    """
+
+
     def __init__(self, p_resources_path):
+        """
+            Brief exaplanation of the method or function
+
+            :param arg1: description
+            :param arg2: description
+            :type arg1: type
+            :type arg1: type
+            :return: description de la valeur de retour
+            :rtype: type de la valeur de retour
+        """
+
         self._resources_path = str(p_resources_path)
         self._pyaudio_obj = pyaudio.PyAudio()
         self._keep_record = False
