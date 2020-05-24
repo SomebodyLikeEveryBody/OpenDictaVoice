@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-    Titre du module
-    ===============
-
-    blablabla
-
-    Constants explanations
+   Module containing the definition of Audio_manager class,
+   which is supposed to manage all audio problematics (record audio, save the audio as wav file, ...)
 """
 
 
@@ -21,23 +17,39 @@ CHUNK = 1024
 
 class Audio_manager:
     """
-        Class Name
-        ==========
+        Class which is supposed to manage all audio problematics (record audio, save the audio as wav file, ...)
+        All attributes of the class are private
 
-        Class explanation, and brief listing of methods and attributes
+
+        Attributes:
+        ----------
+
+        self._resources_path : str                   : path of the resources folder
+        self._pyaudio_obj    : pyaudio object        : pyaudio object used to manage audio problematics
+        self._keep_record    : boolean               : used to point out to Audio_manager object when stop the recording
+        self._audio_frames   : list                  : list containing all recorded CHUNK bytes frames
+        self._stream         : pyaudio.Stream object : stream returned by pyaudio.open() when the record starts
+
+        Methods:
+        -------
+
+        self.stop_stream()
+        self.terminate()
+        self.start_record()
+        self.stop_record_N_save()
+        self.play_wav()
+        self.play_error_sound()
     """
 
 
     def __init__(self, p_resources_path):
         """
-            Brief exaplanation of the method or function
+            Constructor method, initialize all class attributes
 
-            :param arg1: description
-            :param arg2: description
-            :type arg1: type
-            :type arg1: type
-            :return: description de la valeur de retour
-            :rtype: type de la valeur de retour
+            :param p_resources_path: raw string of the path of resources folder
+            :type p_resources_path: str
+            :return: None
+            :rtype: None
         """
 
         self._resources_path = str(p_resources_path)
@@ -47,17 +59,38 @@ class Audio_manager:
         self._stream = None
 
     def stop_stream(self):
+        """
+            Closes self._stream object
+
+            :return: None
+            :rtype: None
+        """
+
         if self._stream is not None:
             self._stream.stop_stream()
             self._stream.close()
             self._stream = None
 
     def terminate(self):
+        """
+            Terminates self.pyaudio_obj object
+
+            :return: None
+            :rtype: None
+        """
+
         self._keep_record = False
         self.stop_stream()
         self.pyaudio_obj.terminate()
 
     def start_record(self):
+        """
+            Start recording using self._pyaudio_obj and store al bytes datas in self._audio_frames
+
+            :return: None
+            :rtype: None
+        """
+
         self._audio_frames = []
         self._stream = self.pyaudio_obj.open(format=FORMAT, channels=CHANNELS,
                     rate=RATE, input=True,
@@ -72,6 +105,15 @@ class Audio_manager:
         self.stop_stream()
 
     def stop_record_N_save(self, p_filename):
+        """
+            Stop recording and write the datas stored in self._audio_frames in a file in a file named filename
+
+            :param p_filename: raw string that indicates the path and the name of the file to save
+            :type p_resources_path: str
+            :return: None
+            :rtype: None
+        """
+
         self._keep_record = False
 
         #save
@@ -84,6 +126,15 @@ class Audio_manager:
         self._audio_frames = []
 
     def play_wav(self, p_filename):
+        """
+            Plays a sound file.
+
+            :param p_filename: raw string that indicates the path and the name of the file to save
+            :type p_filename: str
+            :return: None
+            :rtype: None
+        """
+
         temp__pyaudio_obj = pyaudio.PyAudio()
         wf = wave.open(p_filename, 'rb')
         stream = temp__pyaudio_obj.open(format=temp__pyaudio_obj.get_format_from_width(wf.getsampwidth()),
@@ -101,6 +152,13 @@ class Audio_manager:
         temp__pyaudio_obj.terminate()
 
     def play_error_sound(self):
+        """
+            Plays a sound that is supposed to indicate that an error occured in the software
+            (unrocognized audio for example)
+
+            :return: None
+            :rtype: None
+        """
         self.play_wav(self._resources_path + '/sounds/error.wav')
 
 
