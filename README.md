@@ -46,7 +46,7 @@ To install it, run the shell command:
 pip install SpeechRecognition
 ```
 
-2) **Pyaudio:** To install it, run the shell command: 
+2) **Pyaudio:** To install it, run the shell command:
 ```bash
 pip install pyaudio
 ```

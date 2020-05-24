@@ -6,7 +6,7 @@ CHANNELS = 2
 RATE = 44100
 CHUNK = 1024
 RECORD_SECONDS = 2
- 
+
 class Audio_manager:
     def __init__(self, p_resources_path):
         self._resources_path = str(p_resources_path)
@@ -14,7 +14,6 @@ class Audio_manager:
         self._keep_record = False
         self._audio_frames = []
         self._stream = None
-
 
     def stop_stream(self):
         if self._stream is not None:
@@ -44,7 +43,7 @@ class Audio_manager:
     def stop_record_N_save(self, p_filename):
         self._keep_record = False
 
-        #save 
+        #save
         waveFile = wave.open(p_filename, 'wb')
         waveFile.setnchannels(CHANNELS)
         waveFile.setsampwidth(self.pyaudio_obj.get_sample_size(FORMAT))
@@ -81,7 +80,7 @@ class Audio_manager:
     @property
     def resources_path(self):
         return self._resources_path
-    
+
     @resources_path.setter
     def resources_path(self, p_value):
         self._resources_path = str(p_value)
@@ -89,7 +88,7 @@ class Audio_manager:
     @property
     def pyaudio_obj(self):
         return self._pyaudio_obj
-    
+
     @pyaudio_obj.setter
     def pyaudio_obj(self, p_value):
         raise PermissionError("It is not authorized to modify [pyaudio_obj] attribute")

@@ -33,7 +33,7 @@ class Builded_GUI:
         img = tkinter.PhotoImage(file=self._resources_path + 'imgs/record.png')
         ret_button = tkinter.Button(self._window, image=img)
         ret_button.image = img
-        ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT) 
+        ret_button.config(width=WINDOW_WIDTH, height=WINDOW_HEIGHT)
 
         return ret_button
 
@@ -48,15 +48,15 @@ class Builded_GUI:
     def build_language_chooser(self):
         choices = { 'fr','en'}
         language_stringvar = tkinter.StringVar(self._window)
-        language_stringvar.set('fr') 
+        language_stringvar.set('fr')
         ret_menu = tkinter.OptionMenu(self._window, language_stringvar, *choices)
         ret_menu.language_stringvar = language_stringvar
         return ret_menu
-        
+
     def set_rec_button_visible(self):
         self._stop_button.pack_forget()
         self._rec_button.pack()
-        
+
     def set_stop_button_visible(self):
         self._rec_button.pack_forget()
         self._stop_button.pack()

@@ -21,25 +21,25 @@ class Keyboard_listener:
             on_release=self.do_on_keyreleased)
 
         listener.start()
-        
+
     def do_on_keypressed(self, key):
         if key == keyboard.Key.ctrl:
             self._ctrl_pressed = True
 
         if key == keyboard.Key.shift:
             self._shift_pressed = True
-                
+
         if self._ctrl_pressed and self._shift_pressed and not self._triggered:
             self._do_when_triggered()
             self._triggered = True
-        
+
     def do_on_keyreleased(self, key):
         if key == keyboard.Key.ctrl:
             self._ctrl_pressed = False
-                
+
         if key == keyboard.Key.shift:
             self._shift_pressed = False
-                
+
         if (not self._ctrl_pressed) and (not self._shift_pressed) and self._triggered:
             self._do_when_untriggered()
             self._triggered = False

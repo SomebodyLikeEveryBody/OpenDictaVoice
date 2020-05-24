@@ -1,4 +1,4 @@
-class Formatter: 
+class Formatter:
     def __init__(self, p_resources_directory, p_filenames_list=None):
         self._resources_directory = self.build_resources_directory(p_resources_directory)
         self._rewritingrules_files = self.build_rewritingrules_files_list(p_filenames_list)
@@ -39,7 +39,7 @@ class Formatter:
 
         p_str = p_str + ' '
         for key in self._rewritingrules_dictionary:
-            p_str = p_str.replace(str(key), str(self._rewritingrules_dictionary[key])) 
+            p_str = p_str.replace(str(key), str(self._rewritingrules_dictionary[key]))
 
         return p_str
 
@@ -49,7 +49,7 @@ class Formatter:
     def load_rewritingrules(self):
         for filename in self._rewritingrules_files:
             file = open(self._resources_directory + '/rewritingrules/' + filename, 'r')
-            lines = file.readlines() 
+            lines = file.readlines()
             for line in lines:
                 if line != "":
                     entry = line.split("->")
@@ -63,7 +63,7 @@ class Formatter:
     @property
     def rules_files(self):
         return self._rules_files
-    
+
     @rules_files.setter
     def rules_files(self, p_value):
         if (type(p_value) is not list):
@@ -74,7 +74,7 @@ class Formatter:
     @property
     def rewritingrules_dictionnary(self):
         return self._rewritingrules_dictionnary
-    
+
     @rewritingrules_dictionnary.setter
     def rewritingrules_dictionnary(self, p_value):
         if (type(p_value) is not dict):
