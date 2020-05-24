@@ -5,8 +5,6 @@
    which is supposed to manage all audio problematics (record audio, save the audio as wav file, ...)
 """
 
-
-
 import pyaudio
 import wave
 
@@ -19,7 +17,6 @@ class Audio_manager:
     """
         Class which is supposed to manage all audio problematics (record audio, save the audio as wav file, ...)
         All attributes of the class are private
-
 
         Attributes:
         ----------
@@ -117,7 +114,7 @@ class Audio_manager:
         self._keep_record = False
 
         #save
-        waveFile = wave.open(p_filename, 'wb')
+        waveFile = wave.open(str(p_filename), 'wb')
         waveFile.setnchannels(CHANNELS)
         waveFile.setsampwidth(self.pyaudio_obj.get_sample_size(FORMAT))
         waveFile.setframerate(RATE)
@@ -127,7 +124,7 @@ class Audio_manager:
 
     def play_wav(self, p_filename):
         """
-            Plays a sound file.
+            Plays a sound file
 
             :param p_filename: raw string that indicates the path and the name of the file to save
             :type p_filename: str
@@ -136,7 +133,7 @@ class Audio_manager:
         """
 
         temp__pyaudio_obj = pyaudio.PyAudio()
-        wf = wave.open(p_filename, 'rb')
+        wf = wave.open(str(p_filename), 'rb')
         stream = temp__pyaudio_obj.open(format=temp__pyaudio_obj.get_format_from_width(wf.getsampwidth()),
                     channels=wf.getnchannels(),
                     rate=wf.getframerate(),
