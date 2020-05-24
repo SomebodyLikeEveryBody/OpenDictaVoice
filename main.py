@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
     Entry point of OpenDictaVoice Software
 
