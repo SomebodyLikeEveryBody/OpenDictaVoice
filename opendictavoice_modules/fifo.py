@@ -14,10 +14,9 @@ class FIFO:
         return self._fifo.pop(0)
 
     def push_voice_recognition_process(self):
-        ret_counter = 0
+        ret_counter = self._counter
         #push a new voice_recognition process in the fifo
         self._fifo.append({'id': self._counter, 'state': 'PROCESSING', 'value': ''})
-        ret_counter = self._counter
         self._counter += 1
 
         return ret_counter
