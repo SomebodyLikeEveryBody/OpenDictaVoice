@@ -156,6 +156,7 @@ class Audio_manager:
             :return: None
             :rtype: None
         """
+
         self.play_wav(self._resources_path + '/sounds/error.wav')
 
 
