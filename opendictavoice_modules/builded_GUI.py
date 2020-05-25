@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 
 """
-   Module containing the definition of Builded_GUI class,
-   which is supposed to manage all vues and GUI problematics (buttons, window, ...)
+    Module containing the definition of Builded_GUI class,
+    which is supposed to manage all vues and GUI problematics (buttons, window, ...)
 
-   There are 2 constants defined in this file:
+    There are 2 constants defined in this file:
 
-   WINDOW_WIDTH: width of the GUI
-   WINDOW_HEIGHT: height of the GUI
+    WINDOW_WIDTH: width of the GUI
+    WINDOW_HEIGHT: height of the GUI
 
-   You can modify these constants at your convenience to have a window at the size you desire.
-
+    You can modify these constants at your convenience to have a window at the size you desire.
 """
 
 import tkinter
