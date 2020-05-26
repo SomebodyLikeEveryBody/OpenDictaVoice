@@ -70,8 +70,7 @@ class FIFO:
 
     def push_voice_recognition_process(self):
         """
-            Aooends to the fifo an empty process ({id: len(self._fifo), state: "PROCESSING", value: ""})
-            and returns the id affected to the process
+            Appends to the fifo an empty process ({id: len(self._fifo), state: "PROCESSING", value: ""})
 
             :return: the id affected to the process
             :rtype: int
@@ -83,10 +82,26 @@ class FIFO:
         return ret_counter
 
     def remove_process(self, p_id):
+        """
+            Remove from the fifo the process which id is p_id
+
+            :param p_id: id of the process to remove
+            :type p_id: int
+            :return: None
+            :rtype: None
+        """
         dict_2_remove = self.get_process(p_id)
         self._fifo.remove(dict_2_remove)
 
     def get_process(self, p_id):
+        """
+            Returns the process in the fifo which id is p_id
+
+            :param p_id: id of the process to return
+            :type p_id: int
+            :return: the process which id is p_id
+            :rtype: dict
+        """
         try:
             ret_dict =  next(dict_el for dict_el in self._fifo if dict_el['id'] == p_id)
         except StopIteration:
@@ -95,19 +110,80 @@ class FIFO:
         return ret_dict
 
     def __iter__(self):
+        """
+            Allow to make the fifo object iterable, so we can browse the fifo object with a for loop
+            directly without needing to have access to self._fifo
+
+            More concreteley, it allows to do this:
+            my_fifo = FIFO()
+            for process in my_fifo:
+                print(process['value'])
+
+            instead of:
+            my_fifo = FIFO()
+            for process in my_fifo._fifo:
+                print(process['value'])
+
+            :return: None
+            :rtype: None
+        """
         for dict_process in self._fifo:
             yield dict_process
 
-    def __getitem__(self, p_value):
-        return (self._fifo[p_value])
+    def __getitem__(self, p_index):
+        """
+            Allow to make the fifo object subscriptable, so we can access to a process with an index
+            directly without needing to have access to self._fifo
+
+            More concreteley, it allows to do this:
+            my_fifo = FIFO()
+            print(my_fifo[3])
+
+            instead of:
+            my_fifo = FIFO()
+            ptint(my_fifo._fifo[3])
+
+            :param p_index: index of the element to return from the self._fifo list
+            :type p_index: int
+            :return: the process in the self._fifo list at index p_index
+            :rtype: dict
+        """
+
+        return (self._fifo[p_index])
 
     def __repr__(self):
+        """
+            Makes that print(my_fifo) will print self._fifo
+
+            :return: self._fifo
+            :rtype: list
+        """
+
         return str(self._fifo)
 
     def is_empty(self):
+        """
+            Tests if my_fifo is empty, implied if the list self._fifo is empty
+
+            :return: True if self._fifo is empty, False if it is not
+            :rtype: bool
+        """
+
         return (self._fifo == [])
 
     def set_process_value(self, p_id, p_value):
+        """
+            Method called to set a process status to translated, by setting its value to the text translate and
+            its state to "DONE"
+
+            :param p_id: id of the process to set
+            :type p_id: int
+            :param p_value: value of the text translated
+            :type p_id: str
+            :return: None
+            :rtype: None
+        """
+
         dict_process = self.get_process(p_id)
         dict_process['value'] = p_value
         dict_process['state'] = 'DONE'
