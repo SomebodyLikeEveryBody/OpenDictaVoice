@@ -1,10 +1,60 @@
+# -*- coding: utf-8 -*-
+
+"""
+   Module containing the definition of Formatter class,
+   which is supposed to manage the string replacements defined in rewritingrules files
+   (located in RESOURCES_PATH/rewritingrules/)
+"""
+
 class Formatter:
+    """
+        Class which is supposed to manage the string replacements defined in rewritingrules files
+
+        Attributes:
+        ----------
+
+        self._resources_directory        : str  : path of the ressources folder
+        self._rewritingrules_files       : list : a list of the files names containing the replacement rules
+        self._rewritingrules_dictionary  : dict : a dict of all rules, organized as {'pattern1': 'replacement1', 'pattern2': 'replacement2', ...}
+
+        Methods:
+        -------
+
+        self.build_rewritingrules()
+        self.build_resources_directory()
+        self.raise_exception_if_no_well_formated()
+        self.check_then_add_rules()
+        self.format()
+        self.load()
+    """
+
+
     def __init__(self, p_resources_directory, p_filenames_list=None):
+        """
+            Constructor method, initialize all class attributes
+
+            :param p_resources_directory: raw string of the path of resources folder
+            :type p_resources_path: str
+            :param p_filenames_list: list or rewritingrules files (only the name of the file, not its path)
+            :type p_resources_path: list
+            :return: None
+            :rtype: None
+        """
         self._resources_directory = self.build_resources_directory(p_resources_directory)
         self._rewritingrules_files = self.build_rewritingrules_files_list(p_filenames_list)
         self._rewritingrules_dictionary = {'retour à la ligne ': '\n', 'Retour à la ligne ': '\n'}
 
     def build_rewritingrules_files_list(self, p_list):
+        """
+            Constructor method, initialize all class attributes
+
+            :param p_resources_directory: raw string of the path of resources folder
+            :type p_resources_path: str
+            :param p_filenames_list: list or rewritingrules files (only the name of the file, not its path)
+            :type p_resources_path: list
+            :return: None
+            :rtype: None
+        """
         ret_list = list()
 
         if p_list is not None:
