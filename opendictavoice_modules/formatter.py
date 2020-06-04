@@ -44,33 +44,35 @@ class Formatter:
         self._rewritingrules_files = self.build_rewritingrules_files_list(p_filenames_list)
         self._rewritingrules_dictionary = {'retour à la ligne ': '\n', 'Retour à la ligne ': '\n'}
 
-    def build_rewritingrules_files_list(self, p_list):
+
+    def build_rewritingrules_files_list(self, p_files_list):
         """
-            Constructor method, initialize all class attributes
+            Checks if all files in p_files_list are well formatted and returns it
 
-            :param p_resources_directory: raw string of the path of resources folder
-            :type p_resources_path: str
-            :param p_filenames_list: list or rewritingrules files (only the name of the file, not its path)
-            :type p_resources_path: list
-            :return: None
-            :rtype: None
+            :param p_files_list: list or rewritingrules files (only the name of the file, not its path)
+            :type p_files_list: list of rewritingrules files
+            :return: p_list,
+            :rtype: list
         """
-        ret_list = list()
+        map(lambda file_el: self.raise_exception_if_not_well_formated(file_el), p_files_list)
+        return p_files_list
 
-        if p_list is not None:
-            for file in p_list:
-                file = str(file)
-                self.raise_exception_if_not_well_formated(file)
-                ret_list.append(file)
-
-        return ret_list
 
     def build_resources_directory(self, p_dir):
+        """
+            Checks if all files in p_files_list are well formatted and returns it
+
+            :param p_files_list: list or rewritingrules files (only the name of the file, not its path)
+            :type p_files_list: list of rewritingrules files
+            :return: p_list,
+            :rtype: list
+        """
         ret_dir = str(p_dir)
         if ret_dir[-1] == '/':
             ret_dir = ret_dir[:-1]
 
         return ret_dir
+
 
     def raise_exception_if_not_well_formated(self, p_filename):
         #parse the file and see if its format is correct, if not, raise and exception
