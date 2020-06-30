@@ -19,6 +19,7 @@ Or, download the repository directly from gitlab
 
 
 If you are using **Linux or MacOS**, it is necessary to install **portaudio** so that Python will be able to use the microphone once you allow it.
+
 On **linux**, to install portaudio, run the shell command:
 ```bash
 sudo apt-get install portaudio
