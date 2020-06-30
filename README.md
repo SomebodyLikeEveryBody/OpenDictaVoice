@@ -25,7 +25,7 @@ On **linux**, to install portaudio, run the shell command:
 sudo apt-get install portaudio
 ```
 
-On **MacOS**, to install it, run the shell command:
+On **MacOS**, to install portaudio, run the shell command:
 ```bash
 brew install portaudio
 ```
