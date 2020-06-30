@@ -20,7 +20,10 @@ pas mal, les prochains objectifs sont:
 
 + encapsuler la plupart des fonctions du main dans une class App
 - faire les tests secu
-- mettre a jour la doc README anglais
+- mettre des images dans le README
+  . pour le telechargement sur le site gitlab ou github
+  . pour l'utilisation du logiciel
+
 - faire un README francais
 - faire une video explicative en anglais et une en francais
 - en profiter pour faire de la pub a COMMON VOICE afin de pouvoir avoir des STT qui tournent en local et respectueux de la vie privée
