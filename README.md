@@ -1,10 +1,10 @@
 # OpenDictaVoice
 
-## Description:
+## I) Description:
 
 A voice dictation program written in **python3** to do voice dictation.
 
-## How to use:
+## II) Installation:
 
 ### Step 1: Download the program
 
@@ -31,9 +31,9 @@ sudo apt-get install python3-tk
 ```
 
 
-Thirdly, OpenDictaVoice need the following modules installed to work (speechRecognition, pyaudio, keyboard, wave, pynput)
+Thirdly, OpenDictaVoice need the following modules installed to work (SpeechRecognition, pyaudio, pynput, python-xlib, six)
 
-**You can install all dependancies automatically** by running the command
+**You can install all dependancies automatically** by running, in the downloaded directory, the command:
 ```bash
 pip install -r ./dependancies.txt
 ```
@@ -48,39 +48,41 @@ To install it, run the shell command:
 pip install SpeechRecognition
 ```
 
-2) **Pyaudio:** To install it, run the shell command:
+2) **PyAudio:** To install it, run the shell command:
 ```bash
 pip install pyaudio
 ```
 
-3) **Keyboard:** To install it, run the shell command:
-```bash
-pip install keyboard
-```
-
-4) **Wave:** To install it, run the shell command:
-
-```bash
-pip install wave
-```
-
-5) **Pynput:** To install it, run the shell command:
+3) **pynput:** To install it, run the shell command:
 ```bash
 pip install pynput
 ```
 
-### Step 3: run the program
+4) **python-xlib:** To install it, run the shell command:
 
-Run the shell command:
 ```bash
-python3 ./main.py
+pip install python-xlib
 ```
 
+5) **six:** To install it, run the shell command:
+```bash
+pip install six
+```
+
+## III) How to use:
+
+### Launch:
+
+Go to the the dowloaded directory, then run the shell command:
+```bash
+python3 ./opendictavoice_app/opendictavoice_main.py
+```
+
+Or, launch the program by clicking on the opendictavoice_main.py file in your favorite file browser
+
+### Utilisation: 
+
+
 It will open a window with low opacity that is always in the foreground.
-
-
 Then, put the focus on the element you want to write in (notepad or gedit for example), and when you want to speak, hold **CTRL + SHIFT** keys to launch the record.
-
-
 When you release the CTRL + SHIFT keys, it will analyse the recorded sound and write the text.
-
