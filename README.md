@@ -13,6 +13,8 @@ Run the shell command:
 git clone https://gitlab.com/Sleb/opendictavoice.git
 ```
 
+Or, download the repository directly from gitlab
+
 ### step 2: Install dependencies
 
 
