@@ -18,6 +18,7 @@ Or, download the repository directly from gitlab
 ### step 2: Install dependencies
 
 
+#### Firstly: 
 If you are using **Linux or MacOS**, it is necessary to install **portaudio** so that Python will be able to use the microphone once you allow it.
 
 On **linux**, to install portaudio, run the shell command:
@@ -31,8 +32,8 @@ brew install portaudio
 ```
 
 
-
-secondly, if you are using **Linux**, it is necessary to install **tkinter for python3** (which is installed by default on Windows and MacOs).
+#### Secondly:
+if you are using **Linux**, it is necessary to install **tkinter for python3** (which is installed by default on Windows and MacOs).
 To install it, run the shell command:
 ```bash
 sudo apt-get install python3-tk
@@ -40,7 +41,8 @@ sudo apt-get install python3-tk
 
 
 
-Thirdly, OpenDictaVoice need the following modules installed to work (SpeechRecognition, pyaudio, pynput, python-xlib, six)
+#### Thirdly:
+OpenDictaVoice need the following modules installed to work (SpeechRecognition, pyaudio, pynput, python-xlib, six)
 
 **You can install all dependancies automatically** by running, in the downloaded directory, the command:
 ```bash
