@@ -31,11 +31,13 @@ brew install portaudio
 ```
 
 
+
 secondly, if you are using **Linux**, it is necessary to install **tkinter for python3** (which is installed by default on Windows and MacOs).
 To install it, run the shell command:
 ```bash
 sudo apt-get install python3-tk
 ```
+
 
 
 Thirdly, OpenDictaVoice need the following modules installed to work (SpeechRecognition, pyaudio, pynput, python-xlib, six)
