@@ -23,7 +23,7 @@ class Keyboard_listener:
         listener.start()
 
     def do_on_keypressed(self, key):
-        if key == keyboard.Key.ctrl:
+        if key == keyboard.Key.ctrl or key == keyboard.Key.ctrl_l or key == keyboard.Key.ctrl_r:
             self._ctrl_pressed = True
 
         if key == keyboard.Key.shift:
@@ -34,7 +34,7 @@ class Keyboard_listener:
             self._triggered = True
 
     def do_on_keyreleased(self, key):
-        if key == keyboard.Key.ctrl:
+        if key == keyboard.Key.ctrl or key == keyboard.Key.ctrl_l or key == keyboard.Key.ctrl_r:
             self._ctrl_pressed = False
 
         if key == keyboard.Key.shift:
