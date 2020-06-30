@@ -1,7 +1,5 @@
-keyboard==0.13.5
 PyAudio==0.2.11
 pynput==1.6.8
 python-xlib==0.27
 six==1.15.0
 SpeechRecognition==3.8.1
-Wave==0.0.2
