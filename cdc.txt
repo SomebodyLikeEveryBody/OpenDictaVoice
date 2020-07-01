@@ -20,9 +20,9 @@ pas mal, les prochains objectifs sont:
 
 + encapsuler la plupart des fonctions du main dans une class App
 - faire les tests secu
-- mettre des images dans le README
-  . pour le telechargement sur le site gitlab ou github
-  . pour l'utilisation du logiciel
++ mettre des images dans le README
+  + pour le telechargement sur le site gitlab ou github
+  + pour l'utilisation du logiciel
 
 - faire un README francais
 - faire une video explicative en anglais et une en francais
