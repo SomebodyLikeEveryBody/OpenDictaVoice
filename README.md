@@ -13,7 +13,7 @@ Run the shell command:
 git clone https://gitlab.com/Sleb/opendictavoice.git
 ```
 &nbsp;  
-&nbsp;  
+
 **Or**, if you prefer, download the repository directly from gitlab
 
 
