@@ -103,17 +103,22 @@ It will open a window with low opacity that is always in the foreground.
 ![GUI presentation](./README_imgs/GUI.png "OpenDictaVoice presentation")
 
 By default the recognized language is in french. If you want to change it for the english you can do it with the scrolling menu.
+
 ![How to change de recognized language](./README_imgs/change_language.png "Use the scrolling menu to change the recognized language")
 
 
 Then, put the focus on the element you want to write in (libreoffice writer here in the example),
+
 ![Focus illustration](./README_imgs/focus.png "Focus given to libreoffice writer here")
 
 and when you want to speak, hold **CTRL + SHIFT** keys to launch the record.
+
 ![Launch record](./README_imgs/record.png "Record launched by pressing CTRL + SHIFT simultaneously")
 
 When you release the CTRL + SHIFT keys, it will stop the record, analyse the recorded sound and then write the text where the focus is.
+
 ![Launch record](./README_imgs/stop_record.png "Record launched by pressing CTRL + SHIFT simultaneously")
+
 ![Launch record](./README_imgs/wrote.png "Record launched by pressing CTRL + SHIFT simultaneously")
 
 **Note**: if you don't want to use the **CTRL + SHIFT** hotkeys, you can click on the microphone button of the program to launch the record, and click again on it to stop the record.
