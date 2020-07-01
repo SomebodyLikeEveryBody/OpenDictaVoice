@@ -71,7 +71,7 @@ pip install pyaudio
 It is because the installation file provided by this method is not appropriated to your computer.
 
 In this case, go to [https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio) to download the correct **wheel file** for your computer,
-(PyAudio‑0.2.11‑cp39‑cp39‑win_amd64.whl)for example), and use it to install pyaudio by running the command
+(PyAudio‑0.2.11‑cp39‑cp39‑win_amd64.whl for example), and use it to install pyaudio by running the command
 
 ```bash
 pip install PyAudio‑0.2.11‑cp39‑cp39‑win_amd64.whl
