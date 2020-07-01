@@ -43,7 +43,7 @@ sudo apt-get install python3-tk
 
 
 
-#### Thirdly:
+#### Finally:
 OpenDictaVoice need the following modules installed to work (SpeechRecognition, pyaudio, pynput, python-xlib, six)
 
 **You can install all dependancies automatically** by running, in the downloaded directory, the command:
