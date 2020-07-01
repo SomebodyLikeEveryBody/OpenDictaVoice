@@ -93,7 +93,7 @@ python3 ./opendictavoice_app/opendictavoice_main.py
 
 Or, launch the program by clicking on the opendictavoice_main.py file in your favorite file browser
 
-Note: you can of course make a shortcut to the ```./opendictavoice_app/opendictavoice_main.py``` file o launch it easily.
+Note: you can of course make a shortcut to the ```./opendictavoice_app/opendictavoice_main.py``` file to launch it easily.
 
 ### Utilization: 
 
