@@ -124,3 +124,5 @@ When you release the CTRL + SHIFT keys, it will stop the record, analyse the rec
 **Note**: if you don't want to use the **CTRL + SHIFT** hotkeys, you can click on the microphone button of the program to launch the record, and click again on it to stop the record.
 This will then switch the focus using an ALT + TAB shortcut to get the focus on the element you wanted to write at first.
 
+**Note 2**: You can start a new recording before the analysis of the first one is finished. Each recording is managed by a queue so that the recognized texts will always be written
+in the order in which they were recorded. It is usefull to play for time.
