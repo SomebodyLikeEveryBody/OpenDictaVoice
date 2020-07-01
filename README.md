@@ -136,7 +136,7 @@ OpenDictaVoice is just a graphical interface to do voice dictation using a Speec
 Moreover, speech recognition is a major thing in a multitude of fields (ergonomics, new form of human-machine interface, assistance for disabled people, ...) and the possibility
 of having this kind of technology accessible to all people in open source is most likely desirable. But the most precious commodity for this is voice samples...
 
-Fortunately, we can all make this possible. There is an open source project you can ALL contribute to : **Common Voice** ()[https://voice.mozilla.org/](https://voice.mozilla.org/))
+Fortunately, we can all make this possible. There is an open source project you can ALL contribute to : **Common Voice** ([https://voice.mozilla.org/](https://voice.mozilla.org/))
 
 ![Common Voice](./README_imgs/common_voice.png "Common Voice")
 
