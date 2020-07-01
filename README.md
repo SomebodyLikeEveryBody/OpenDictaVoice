@@ -133,14 +133,17 @@ in the order in which they were recorded. It is usefull to play for time.
 OpenDictaVoice is just a graphical interface to do voice dictation using a Speech To Text Engine. For now it uses "Google STT" or "CMU Sphinx" but if you have your own Speech To Text Engine 
 (Created with Common Voice and DeepSpeech for example, [https://research.mozilla.org/machine-learning/](https://research.mozilla.org/machine-learning/)), you can use it with this program by modifying the source code.
 
-Moreover, voice recognition is a major thing in a multitude of fields (ergonomics, new form of human-machine interface, assistance for disabled people, ...) and the possibility
+Moreover, speech recognition is a major thing in a multitude of fields (ergonomics, new form of human-machine interface, assistance for disabled people, ...) and the possibility
 of having this kind of technology accessible to all people in open source is most likely desirable. But the most precious commodity for this is voice samples...
 
-Fortunately, to make this possible, there is an open source project you can ALL contribute to : **Common Voice**: [https://voice.mozilla.org/](https://voice.mozilla.org/)
+Fortunately, we can all make this possible. There is an open source project you can ALL contribute to : **Common Voice** ()[https://voice.mozilla.org/](https://voice.mozilla.org/))
 
-Common Voice is a project built by Mozilla to constitute a large database of spoken text, which can be downloaded by everyone, to train algorithms in purpose to be able to have its own voice recognition
-program ! 
+![Common Voice](./README_imgs/common_voice.png "Common Voice")
+
+Common Voice is a project built by Mozilla to constitute a large database of spoken text, which can be downloaded by everyone, to train algorithms in purpose to have its own voice recognition ! 
 
 If only 1000 persons did 45 records every day during 6 month, the database would contain 10 000 hours of records which is enough to have a correct voice recognition !
-So everyone records counts.
+
+So if you want to make speech recognition incredibly efficient and accessible for everyone as GNU-linux is, contribute in Common voice, even 5 small recordings per week is already great.
+
 
