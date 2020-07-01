@@ -15,8 +15,9 @@ git clone https://gitlab.com/Sleb/opendictavoice.git
 &nbsp;  
 **Or**, if you prefer, download the repository directly from gitlab
 
-
+<kbd>
 ![Download repository from Gitlab](./README_imgs/download_gitlab.png "Download repository from Gitlab")
+</kbd>
 
 ### step 2: Install dependencies
 
