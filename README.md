@@ -12,8 +12,7 @@ Run the shell command:
 ```bash
 git clone https://gitlab.com/Sleb/opendictavoice.git
 ```
-<br />
-<br />
+
 **Or**, if you prefer, download the repository directly from gitlab
 ![Download repository from Gitlab](./README_imgs/download_gitlab.png "Download repository from Gitlab")
 
