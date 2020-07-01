@@ -15,7 +15,7 @@ git clone https://gitlab.com/Sleb/opendictavoice.git
 &nbsp;  
 **Or**, if you prefer, download the repository directly from gitlab
 
-![Download repository from Gitlab](./README_imgs/download_gitlab.png "Download repository from Gitlab")
+![Download the repository from Gitlab](./README_imgs/download_gitlab.png "Download the repository from Gitlab")
 
 ### step 2: Install dependencies
 
@@ -99,5 +99,9 @@ Note: you can of course make a shortcut to the ```./opendictavoice_app/opendicta
 
 
 It will open a window with low opacity that is always in the foreground.
+
+![GUI presentation](./README_imgs/GUI.png "OpenDictaVoice presentation")
+
+
 Then, put the focus on the element you want to write in (notepad or gedit for example), and when you want to speak, hold **CTRL + SHIFT** keys to launch the record.
 When you release the CTRL + SHIFT keys, it will analyse the recorded sound and write the text.
