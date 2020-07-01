@@ -126,3 +126,9 @@ This will then switch the focus using an ALT + TAB shortcut to get the focus on 
 
 **Note 2**: You can start a new recording before the analysis of the first one is finished. Each recording is managed by a queue so that the recognized texts will always be written
 in the order in which they were recorded. It is usefull to play for time.
+
+
+## IV) To go further:
+
+OpenDictaVoice is just a graphical interface to do voice dictation using a Speech To Text Engine. For now it uses "Google STT" or "CMU Sphinx" but if you have your own Speech To Text Engine 
+(Created with Common Voice and DeepSpeech for example, [https://research.mozilla.org/machine-learning/][https://research.mozilla.org/machine-learning/]), you can use it with this program by modifying the source code.
