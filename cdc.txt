@@ -26,7 +26,7 @@ pas mal, les prochains objectifs sont:
 
 - faire un README francais
 - faire une video explicative en anglais et une en francais
-- en profiter pour faire de la pub a COMMON VOICE afin de pouvoir avoir des STT qui tournent en local et respectueux de la vie privée
++ en profiter pour faire de la pub a COMMON VOICE afin de pouvoir avoir des STT qui tournent en local et respectueux de la vie privée
 
 - faire en sorte de verifier le format des fichiers de formattage et throw une exception si le format est pas bon
 - idealement, ecrire le texte au fur et a mesure avec un système qui reconnait quand on arrete de parler
